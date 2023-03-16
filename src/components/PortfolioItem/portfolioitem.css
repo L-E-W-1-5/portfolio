@@ -1,0 +1,22 @@
+.cover-container{
+    position: relative;
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+}
+
+.item-info{
+    /* visibility: hidden; */
+}
+
+.cover-container:hover{
+    background-color: rgb(212, 18, 18);
+    
+}
+
+.image-cover{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
