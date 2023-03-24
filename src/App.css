@@ -1,3 +1,7 @@
 body {
-    background-color: aquamarine;
+    background-color: aquamarine;  
+}
+
+.main-container{
+    padding: 5%;
 }

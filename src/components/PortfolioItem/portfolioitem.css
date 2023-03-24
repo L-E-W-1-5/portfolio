@@ -15,8 +15,12 @@
 }
 
 .image-cover{
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     z-index: 100;
+}
+
+.image-cover:hover{
+    opacity: 0;
 }
