@@ -4,6 +4,8 @@ import './portfolioitem.css';
 import pics from '../../assets/patchesCheat.PNG';
 
 export function PortfolioItem(props) {
+
+    
     return (
         <div>    
       
