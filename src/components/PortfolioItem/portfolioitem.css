@@ -1,17 +1,8 @@
 .cover-container{
     position: relative;
-    /* background-color: blue; */
+    background-color: rgb(255, 171, 93);
     width: 100%;
     height: 100%;
-}
-
-.item-info{
-    /* visibility: hidden; */
-}
-
-.cover-container:hover{
-    background-color: rgb(212, 18, 18);
-    
 }
 
 .image-cover{
@@ -23,4 +14,8 @@
 
 .image-cover:hover{
     opacity: 0;
+}
+
+.cover-container:hover{
+    outline: 15px solid white;
 }
