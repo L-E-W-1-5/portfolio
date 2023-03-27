@@ -26,7 +26,11 @@
     overflow: hidden;
 }
 
-.window-wrapper:last-child{
+/* .window-wrapper:last-child{
+    overflow: visible;
+} */
+
+#visible-overflow{
     overflow: visible;
 }
 

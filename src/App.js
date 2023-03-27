@@ -14,14 +14,15 @@ import MultipleWindows from './components/MultipleWindows/MultipleWindows.js';
 
 function App() {
 
-  const [window, showWindow] = useState(false);
+  const [window, showWindow] = useState([]);
   const [windows, addWindows] = useState([]);
 
 
   const addWindow = (info) => {
-    addWindows(oldArray => [...oldArray, {key:Math.round(Math.random()*100),
-                                          data:info}]);
-    showWindow(true);
+    let randomKey = Math.round(Math.random()*100);
+    addWindows(oldArray => [...oldArray, {key: randomKey,
+                                          data: info}]);
+    showWindow(randomKey);
   }
 
   const closeWindow = (windowId) => {
@@ -37,7 +38,7 @@ function App() {
   return (
     <div>
     <div className='windows-container'>
-      {window && <MultipleWindows closeWindow={closeWindow} Windows={windows}></MultipleWindows>}
+      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows}></MultipleWindows>}
       </div>
       <div className="main-container">
       <img className="desktop-icons" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>

@@ -1,9 +1,10 @@
 import './Window.css';
 
 const Window = (props) => {
-    console.log(props.key);
+let activeWindow = props.activeWindow;
+
     return (
-        <div className="window-wrapper">
+        <div className="window-wrapper" id={activeWindow === props.thisId ? "visible-overflow" : ""} onClick={() => {props.setWindow(props.thisId)}}>
         <div className="document-window">
             <div className="window-nav">
                 <button>_</button>
