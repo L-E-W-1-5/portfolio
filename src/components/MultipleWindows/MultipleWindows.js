@@ -2,7 +2,7 @@ import Window from '../Window/Window.js';
 import './MultipleWindows.css'
 import {useState, useEffect} from 'react';
 
-const MultipleWindows = ({windows, closeWindow, activeKey}) => {
+const MultipleWindows = ({windows, closeWindow, activeKey, addWindow}) => {
 
     const [targetWindow, setTargetWindow] = useState();
 
@@ -19,7 +19,8 @@ const MultipleWindows = ({windows, closeWindow, activeKey}) => {
 
                 return (
                     
-                <Window key={window.key} thisId={window.key} setWindow={setTargetWindow} activeWindow={targetWindow} data={window.data} closeWindow={() => closeWindow(window.key)}></Window>
+                <Window key={window.key} thisId={window.key} setWindow={setTargetWindow} activeWindow={targetWindow} data={window.data} 
+                closeWindow={() => closeWindow(window.key)} addWindow={addWindow}></Window>
                 )
             })}
         </div>

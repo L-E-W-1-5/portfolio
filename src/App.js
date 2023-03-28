@@ -38,12 +38,12 @@ function App() {
   return (
     <div>
     <div className='windows-container'>
-      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows}></MultipleWindows>}
+      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow}></MultipleWindows>}
       </div>
       <div className="main-container">
-      <img className="desktop-icons" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
-      <img className="desktop-icons" src={recycle} alt="recycle_bin" onClick={() => addWindow("recycle_bin")}></img>
-      <img className="desktop-icons" src={wordpad} alt="wordpad" onClick={() => addWindow("wordpad")}></img>
+      <img className="desktop-icons icon" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
+      <img className="desktop-icons icon" src={recycle} alt="recycle_bin" onClick={() => addWindow("recycle_bin")}></img>
+      <img className="desktop-icons icon" src={wordpad} alt="wordpad" onClick={() => addWindow("wordpad")}></img>
       
       
       </div>

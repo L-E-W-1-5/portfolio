@@ -1,20 +1,76 @@
 import './Window.css';
+import {useState} from 'react';
+import folder from '../../assets/open_folder.png'
+import {projects} from '../../data/projects.js';
+import cv from '../../data/Screenshot 2023-03-28 211658.png'
+import cv2 from '../../data/page_2.png';
+
+import { Document, Page, pdfjs } from 'react-pdf';
+import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 
 const Window = (props) => {
+
+    const [windowSize, setWindowSize] = useState(false);
+    const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
+
+    function onDocumentLoadSuccess({ numPages }) {
+        setNumPages(numPages);
+        setPageNumber(1);
+    }
+
+
 let activeWindow = props.activeWindow;
+
+//TODO - get the correct title and navbar title showing for the projects.
+
+    const maximiseWindow = () => {
+        setWindowSize(current => !current);
+    }
 
     return (
         <div className="window-wrapper" id={activeWindow === props.thisId ? "visible-overflow" : ""} onClick={() => {props.setWindow(props.thisId)}}>
-        <div className="document-window">
+        <div className={windowSize === true ? "maximised-window" : "document-window"}>
             <div className="window-nav">
+                <span className="window-nav-text">{props.data}</span>
                 <button>_</button>
-                <button>[]</button>
+                <button onClick={maximiseWindow}>[]</button>
                 <button onClick={() => props.closeWindow(false)}>X</button>
                 
                 
             </div>
             <div className="window-contents">
-                <h1>{props.data}</h1>
+            {props.data === "computer" && projects.map((project) => {
+                return (
+                    <div className="window-item icon" onClick={() => props.addWindow(`WordPad - ${project.title}`)}>
+                    <img className="window-icon" src={folder} alt="folder"></img>
+                    <span className="window-item-title">{project.title}</span>
+                </div>
+                )
+            })}
+
+            {props.data === "wordpad" && <div className="cv-window">
+                <img className="cv-image" src={cv} alt="cv"></img>
+                <img className="cv-image" src={cv2} alt="cv"></img>
+            </div>}
+
+            {props.data === "recycle_bin" && <div className="cv-window">
+            <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess} options={{ workerSrc: "/pdf.worker.js" }}>
+            
+            <Page pageNumber={pageNumber} />
+            <Page pageNumber={numPages} />
+            </Document>
+            <p>
+              Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
+            </p>
+            </div>}
+
+            {props.data !== "recycle_bin" && props.data !== "wordpad" && props.data !== "computer" && <div>
+                <h2>{props.data}</h2>
+            </div>}
+            
             </div>
         </div>
         </div>

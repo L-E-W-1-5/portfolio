@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './navbar.css';
+import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
 
 export function Navbar() {
 
@@ -14,7 +15,7 @@ export function Navbar() {
             {startMenu && <div className="start-menu">
                 <a href="#about_me_link">About Me</a>
                 <a href="#projects_link">Projects</a>
-                <a href="#cv_link">CV</a>
+                <a href={pdf}>CV</a>
             </div>}
 
         <div className="nav-container">
