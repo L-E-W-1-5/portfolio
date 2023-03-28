@@ -14,11 +14,20 @@ const Window = (props) => {
 
     const [windowSize, setWindowSize] = useState(false);
     const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
+    const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
+    const [projectSelected, setProjectSelected] = useState()
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
         setPageNumber(1);
+    }
+    let selected;
+    for (let i = 0; i < projects.length; i++){
+  
+        if (`WordPad - ${projects[i].title}` === props.data){
+           // setProjectSelected(projects[i]);
+            selected = projects[i]
+        }
     }
 
 
@@ -68,7 +77,8 @@ let activeWindow = props.activeWindow;
             </div>}
 
             {props.data !== "recycle_bin" && props.data !== "wordpad" && props.data !== "computer" && <div>
-                <h2>{props.data}</h2>
+                <h2>{selected.title}</h2>
+                <p>{selected.details}</p>
             </div>}
             
             </div>
