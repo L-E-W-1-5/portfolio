@@ -8,13 +8,19 @@
 } */
 
 .document-window {
-    width: 70vw;
+    /* width: 70vw; */
     /* min-width: 10em; */
     height: 45vh;
     border-radius: 0.2em;
     border: solid #666 1px;
     background-color: #ccc;
     padding: 0.25em;
+    /* top: 100px;
+    left: 100px;
+    align-self: flex-end; */
+    margin-left: 100px;
+    margin-top: auto;
+    /* position:absolute; */
   
     /* display: flex;
     flex-direction: column;
@@ -35,7 +41,12 @@
 }
 
 .window-wrapper{
+    /* position:absolute; */
     overflow: hidden;
+}
+
+.window-absolute{
+    position:absolute;
 }
 
 /* .window-wrapper:last-child{

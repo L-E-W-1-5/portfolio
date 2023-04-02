@@ -16,6 +16,9 @@ const Window = (props) => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
     const [projectSelected, setProjectSelected] = useState()
+    const [x, setX] = useState(200)
+    const [y, setY] = useState(200);
+
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
@@ -39,10 +42,19 @@ let activeWindow = props.activeWindow;
         setWindowSize(current => !current);
     }
 
+    const handleDragEnd = (e) => {
+        e.preventDefault();
+        setX(e.clientX - 600);
+        setY(e.clientY);
+        console.log(e);
+
+        //onDragEnd={handleDragEnd}  
+    }
+
     return (
-        <div className="window-wrapper" id={activeWindow === props.thisId ? "visible-overflow" : ""} onClick={() => {props.setWindow(props.thisId)}}>
+        <div className="window-wrapper" id={activeWindow === props.thisId ? "visible-overflow" : ""} onClick={() => {props.setWindow(props.thisId)}}  style={{left: x, top: y}}>
         <div className={windowSize === true ? "maximised-window" : "document-window"}>
-            <div className="window-nav">
+            <div className="window-nav" draggable  onDragEnd={handleDragEnd}>
                 <span className="window-nav-text">{props.data}</span>
                 <button>_</button>
                 <button onClick={maximiseWindow}>[]</button>

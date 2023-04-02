@@ -17,8 +17,10 @@ body {
 
 .windows-container{
     position: absolute;
-    top: 10%;
-    left: 10%;
+    margin: 100px;
+    width: 100vw;
+    /* top: 10%;
+    left: 10%; */
 }
 
 .icon:hover{
