@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './navbar.css';
 import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
 
-export function Navbar({tabs}) {
+export function Navbar({tabs, setNewTarget, newTarget}) {
 
     const [startMenu, setStartMenu] = useState(false);
 
@@ -24,7 +24,7 @@ export function Navbar({tabs}) {
 
         <div className="nav-tab">
             {tabs.map((tab) => {
-                return <div className="tab-div">{tab.data}</div>
+                return <div className="tab-div" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => setNewTarget(tab.key)}>{tab.data}</div>
             })}
         </div>
         </div>

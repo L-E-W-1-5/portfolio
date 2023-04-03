@@ -17,6 +17,8 @@ function App() {
   const [window, showWindow] = useState([]);
   const [windows, addWindows] = useState([]);
 
+  const [newTargetWindow, setNewTargetWindow] = useState();
+
 
   const addWindow = (info) => {
     let randomKey = Math.round(Math.random()*10000);
@@ -37,7 +39,7 @@ function App() {
   return (
     <div>
     <div className='windows-container'>
-      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow}></MultipleWindows>}
+      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow}></MultipleWindows>}
       </div>
       <div className="main-container">
       <img className="desktop-icons icon" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
@@ -47,7 +49,7 @@ function App() {
       
       </div>
       
-      <Navbar tabs={windows}></Navbar>
+      <Navbar tabs={windows} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow}></Navbar>
     </div>
   );
 }
