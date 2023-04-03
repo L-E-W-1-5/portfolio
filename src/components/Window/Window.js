@@ -15,7 +15,7 @@ const Window = (props) => {
     const [windowSize, setWindowSize] = useState(false);
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
-    const [projectSelected, setProjectSelected] = useState()
+    //const [projectSelected, setProjectSelected] = useState()
 
     const [x, setX] = useState(props.offset * 40);
     const [y, setY] = useState(props.offset * 40);

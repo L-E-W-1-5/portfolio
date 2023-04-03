@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './navbar.css';
 import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
 
-export function Navbar() {
+export function Navbar({tabs}) {
 
     const [startMenu, setStartMenu] = useState(false);
 
@@ -20,7 +20,13 @@ export function Navbar() {
 
         <div className="nav-container">
             <button className="start-button" onClick={() => setStartMenu(current => !current)}>Start</button>
-   
+        
+
+        <div className="nav-tab">
+            {tabs.map((tab) => {
+                return <div className="tab-div">{tab.data}</div>
+            })}
+        </div>
         </div>
 
         

@@ -19,7 +19,7 @@ function App() {
 
 
   const addWindow = (info) => {
-    let randomKey = Math.round(Math.random()*100);
+    let randomKey = Math.round(Math.random()*10000);
     addWindows(oldArray => [...oldArray, {key: randomKey,
                                           data: info}]);
     showWindow(randomKey);
@@ -47,7 +47,7 @@ function App() {
       
       </div>
       
-      <Navbar></Navbar>
+      <Navbar tabs={windows}></Navbar>
     </div>
   );
 }
