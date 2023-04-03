@@ -30,7 +30,6 @@ function App() {
     addWindows(windows.filter((x) => {
       return x.key !== windowId;
     }));
-
   }
 
 

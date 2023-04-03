@@ -13,13 +13,13 @@ const MultipleWindows = ({windows, closeWindow, activeKey, addWindow}) => {
     return(
         <>
         <div className="window-stack">
-            {windows.map((window) => {
+            {windows.map((window, axis) => {
                 console.log(window)
               
 
                 return (
                     
-                <Window key={window.key} thisId={window.key} setWindow={setTargetWindow} activeWindow={targetWindow} data={window.data} 
+                <Window key={window.key} thisId={window.key} setWindow={setTargetWindow} offset={axis} activeWindow={targetWindow} data={window.data} 
                 closeWindow={() => closeWindow(window.key)} addWindow={addWindow}></Window>
                 )
             })}

@@ -44,6 +44,11 @@
 
 #visible-overflow{
     overflow: visible;
+    z-index: 2;
+}
+
+#normal-index{
+    z-index: 1;
 }
 
 .window-nav{
