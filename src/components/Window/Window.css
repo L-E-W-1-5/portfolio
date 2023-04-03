@@ -8,7 +8,7 @@
 } */
 
 .document-window {
-    /* width: 70vw; */
+    width: 70vw;
     /* min-width: 10em; */
     height: 45vh;
     border-radius: 0.2em;
