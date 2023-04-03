@@ -20,16 +20,37 @@ function App() {
   const [newTargetWindow, setNewTargetWindow] = useState();
 
 
+
+  const handleMinimise = (w) => {
+    
+    let windowsOpen = [...windows];
+
+    for (let i = 0; i < windowsOpen.length; i++){
+
+      if (windowsOpen[i].key === w){
+
+        windowsOpen[i].minimised = !windowsOpen[i].minimised;
+      }
+    }
+    addWindows(windowsOpen);
+  }
+
+
   const addWindow = (info) => {
+
     let randomKey = Math.round(Math.random()*10000);
+    
     addWindows(oldArray => [...oldArray, {key: randomKey,
-                                          data: info}]);
+                                          data: info,
+                                          minimised: false}]);
     showWindow(randomKey);
   }
+
 
   const closeWindow = (windowId) => {
  
     addWindows(windows.filter((x) => {
+
       return x.key !== windowId;
     }));
   }
@@ -39,7 +60,8 @@ function App() {
   return (
     <div>
     <div className='windows-container'>
-      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow}></MultipleWindows>}
+      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow} 
+        setNewTarget={setNewTargetWindow} newTarget={newTargetWindow} minimise={handleMinimise}></MultipleWindows>}
       </div>
       <div className="main-container">
       <img className="desktop-icons icon" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
@@ -49,7 +71,7 @@ function App() {
       
       </div>
       
-      <Navbar tabs={windows} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow}></Navbar>
+      <Navbar tabs={windows} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow} minimise={handleMinimise}></Navbar>
     </div>
   );
 }

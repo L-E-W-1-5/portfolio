@@ -20,6 +20,8 @@ const Window = (props) => {
     const [x, setX] = useState(props.offset * 40);
     const [y, setY] = useState(props.offset * 40);
 
+    
+
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
         setPageNumber(1);
@@ -43,16 +45,19 @@ let activeWindow = props.activeWindow;
     }
 
     const handleDragEnd = (e) => {
-        setX(e.clientX - 600)
-        setY(e.clientY)
+        console.log(e);
+        setX(e.clientX - 600);
+        setY(e.clientY);
     }
 
+    
+
     return (
-        <div className="window-wrapper" id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"} onClick={() => {props.setWindow(props.thisId)}} style={{position: "absolute", top: y, left: x}}>
+        <div className={props.minimise === true ? "minimised-window" : "window-wrapper"} id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"} onClick={() => {props.setWindow(props.thisId)}} style={{position: "absolute", top: y, left: x}}>
         <div className={windowSize === true ? "maximised-window" : "document-window"}>
             <div className="window-nav" draggable onDragEnd={handleDragEnd}>
                 <span className="window-nav-text">{props.data}</span>
-                <button>_</button>
+                <button onClick={() => props.handleMinimise(props.thisId)}>_</button>
                 <button onClick={maximiseWindow}>[]</button>
                 <button onClick={() => props.closeWindow(false)}>X</button>
                 
@@ -96,3 +101,24 @@ let activeWindow = props.activeWindow;
 }
 
 export default Window;
+
+/*
+
+const [mousePos, setMousePos] = useState({});
+
+    useEffect(() => {
+      const handleMouseMove = (event) => {
+        setMousePos({ x: event.clientX, y: event.clientY });
+      };
+  
+      window.addEventListener('mousemove', handleMouseMove);
+  
+      return () => {
+        window.removeEventListener(
+          'mousemove',
+          handleMouseMove
+        );
+      };
+    }, []);
+
+    */

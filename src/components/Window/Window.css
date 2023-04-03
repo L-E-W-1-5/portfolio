@@ -42,7 +42,8 @@
 
 .window-wrapper{
     /* position:absolute; */
-    overflow: hidden;
+    /* overflow: hidden; */
+    opacity: 1;
 }
 
 .window-absolute{
@@ -52,6 +53,11 @@
 /* .window-wrapper:last-child{
     overflow: visible;
 } */
+
+.minimised-window{
+    opacity: 0;
+    display: none;
+}
 
 #visible-overflow{
     overflow: visible;

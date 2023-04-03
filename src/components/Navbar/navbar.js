@@ -2,11 +2,21 @@ import React, {useState} from 'react';
 import './navbar.css';
 import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
 
-export function Navbar({tabs, setNewTarget, newTarget}) {
+export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
 
     const [startMenu, setStartMenu] = useState(false);
 
-
+    const handleMinimiseFocus = (tab) => {
+        if (newTarget === tab.key || tab.minimised === true){
+            if (tab.minimised === true){
+                setNewTarget(tab.key);
+            }
+            minimise(tab.key);
+        }
+        else{
+            setNewTarget(tab.key);
+        }
+    }
 
 
     return (
@@ -24,7 +34,7 @@ export function Navbar({tabs, setNewTarget, newTarget}) {
 
         <div className="nav-tab">
             {tabs.map((tab) => {
-                return <div className="tab-div" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => setNewTarget(tab.key)}>{tab.data}</div>
+                return <div className="tab-div" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => handleMinimiseFocus(tab)}>{tab.data}</div>
             })}
         </div>
         </div>

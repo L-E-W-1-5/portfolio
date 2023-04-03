@@ -1,8 +1,8 @@
 import Window from '../Window/Window.js';
 import './MultipleWindows.css'
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 
-const MultipleWindows = ({windows, closeWindow, activeKey, addWindow, setNewTarget, newTarget}) => {
+const MultipleWindows = ({windows, closeWindow, activeKey, addWindow, setNewTarget, newTarget, minimise}) => {
 
     // const [targetWindow, setTargetWindow] = useState();
 
@@ -14,13 +14,13 @@ const MultipleWindows = ({windows, closeWindow, activeKey, addWindow, setNewTarg
         <>
         <div className="window-stack">
             {windows.map((window, axis) => {
-                console.log(window)
+               
               
 
                 return (
                     
                 <Window key={window.key} thisId={window.key} setWindow={setNewTarget} offset={axis} activeWindow={newTarget} data={window.data} 
-                closeWindow={() => closeWindow(window.key)} addWindow={addWindow}></Window>
+                closeWindow={() => closeWindow(window.key)} addWindow={addWindow} minimise={window.minimised} handleMinimise={minimise}></Window>
                 )
             })}
         </div>
