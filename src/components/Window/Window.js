@@ -4,6 +4,7 @@ import folder from '../../assets/open_folder.png'
 import {projects} from '../../data/projects.js';
 import cv from '../../data/Screenshot 2023-03-28 211658.png'
 import cv2 from '../../data/page_2.png';
+import {Stages} from '../Stages/stages.js';
 
 import { Document, Page, pdfjs } from 'react-pdf';
 import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
@@ -26,19 +27,22 @@ const Window = (props) => {
         setNumPages(numPages);
         setPageNumber(1);
     }
+
+
     let selected;
+
     for (let i = 0; i < projects.length; i++){
   
         if (`WordPad - ${projects[i].title}` === props.data){
-           // setProjectSelected(projects[i]);
+
             selected = projects[i]
         }
     }
 
 
-let activeWindow = props.activeWindow;
+    let activeWindow = props.activeWindow;
 
-//TODO - get the correct title and navbar title showing for the projects.
+    //TODO: - get the correct title and navbar title showing for the projects.
 
     const maximiseWindow = () => {
         setWindowSize(current => !current);
@@ -89,9 +93,14 @@ let activeWindow = props.activeWindow;
             </p>
             </div>}
 
-            {props.data !== "recycle_bin" && props.data !== "wordpad" && props.data !== "computer" && <div>
-                <h2>{selected.title}</h2>
-                <p>{selected.details}</p>
+            {props.data !== "recycle_bin" && props.data !== "wordpad" && props.data !== "computer" && <div className="project-window-scroll">
+                {/* <h2>{selected.title}</h2>
+                <p>{selected.details}</p> 
+                map the array of pics/details into stages here*/}
+                {selected.stages.map((stage) => {
+                    return <Stages project={stage}></Stages>
+                })}
+                {/* <Stages project={selected}></Stages> */}
             </div>}
             
             </div>

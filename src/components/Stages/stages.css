@@ -1,0 +1,11 @@
+.project-window{
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.project-image{
+    width: 50%;
+}
+
+/* TODO: fix the width and layout of the images */

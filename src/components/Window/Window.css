@@ -122,5 +122,11 @@
 .window-icon{
     width: 100px;
     height: 100px;
-    
+}
+
+.project-window-scroll{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
