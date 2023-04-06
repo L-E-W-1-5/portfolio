@@ -61,9 +61,9 @@ const Window = (props) => {
         <div className={windowSize === true ? "maximised-window" : "document-window"}>
             <div className={activeWindow === props.thisId ? "window-nav-selected": "window-nav"} draggable onDragEnd={handleDragEnd}>
                 <span className="window-nav-text">{props.data}</span>
-                <button onClick={() => props.handleMinimise(props.thisId)}>_</button>
-                <button onClick={maximiseWindow}>[]</button>
-                <button onClick={() => props.closeWindow(false)}>X</button>
+                <button className="nav-buttons" onClick={() => props.handleMinimise(props.thisId)}>_</button>
+                <button className="nav-buttons" onClick={maximiseWindow}>[]</button>
+                <button className="nav-buttons" onClick={() => props.closeWindow(false)}>X</button>
                 
                 
             </div>
