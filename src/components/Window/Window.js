@@ -50,7 +50,7 @@ const Window = (props) => {
 
     const handleDragEnd = (e) => {
         console.log(e);
-        setX(e.clientX - 600);
+        setX(e.clientX - e.target.offsetLeft);  // Testing
         setY(e.clientY);
     }
 
