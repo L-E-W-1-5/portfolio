@@ -7,9 +7,10 @@ import {Navbar} from './components/Navbar/navbar.js'
 // import {CV} from './components/CV/cv.js'
 // import {Popup} from './components/Popup/popup.js';
 // import Window from './components/Window/Window.js';
-import computer from './assets/computer.png';
+// import computer from './assets/computer.png';
 import recycle from './assets/recycle.png';
 import wordpad from './assets/wordpad.png';
+import my_computer from './assets/my_computer_icon_new.png';
 import MultipleWindows from './components/MultipleWindows/MultipleWindows.js';
 
 function App() {
@@ -64,7 +65,7 @@ function App() {
         setNewTarget={setNewTargetWindow} newTarget={newTargetWindow} minimise={handleMinimise}></MultipleWindows>}
       </div>
       <div className="main-container">
-      <img className="desktop-icons icon" src={computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
+      <img className="desktop-icons icon" src={my_computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
       <img className="desktop-icons icon" src={recycle} alt="recycle_bin" onClick={() => addWindow("recycle_bin")}></img>
       <img className="desktop-icons icon" src={wordpad} alt="wordpad" onClick={() => addWindow("wordpad")}></img>
       

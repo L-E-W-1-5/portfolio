@@ -6,7 +6,7 @@ export function Stages({project}) {
         <div className="project-window">
             {/* <p>{project.title}</p> */}
             
-            <p>{project.description}</p>
+            <p className="project-description">{project.description}</p>
             <img className="project-image" src={project.photo} alt="stage of development"></img>
             {/* {project.photos.map((pic) => {
                     return <img src={pic} alt="project stage number 1"></img>

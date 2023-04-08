@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import './navbar.css';
-import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
+import Clock from '../Clock/Clock.js';
+import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf';
+import windowsIcon from '../../assets/windows_icon.png';
+
+
+
 
 export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
 
     const [startMenu, setStartMenu] = useState(false);
+    const wrapperRef = useRef(null);
+    useOutsideAlert(wrapperRef);
 
     const handleMinimiseFocus = (tab) => {
         if (newTarget === tab.key || tab.minimised === true){
@@ -18,27 +25,51 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
         }
     }
 
+    function useOutsideAlert(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setStartMenu(false);
+                }
+            }
+
+            document.addEventListener('mousedown', handleClickOutside);
+            return () => {
+                document.removeEventListener('mousedown', handleClickOutside);
+            }
+        }, [ref])
+    }
+
 
     return (
-        <div className="nav-menu">
+        <div className="nav-menu border-shading">
 
-            {startMenu && <div className="start-menu">
+            {startMenu && <div ref={wrapperRef} className="start-menu">
                 <a href="#about_me_link">About Me</a>
                 <a href="#projects_link">Projects</a>
                 <a href={pdf}>CV</a>
             </div>}
 
-        <div className="nav-container">
-            <button className="start-button" onClick={() => setStartMenu(current => !current)}>Start</button>
-        
+            <div className="nav-container">
 
-        <div className="nav-tab">
-            {tabs.map((tab) => {
-                return <div className="tab-div" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => handleMinimiseFocus(tab)}>{tab.data}</div>
-            })}
-        </div>
-        </div>
+                <div className="start-button border-shading" id={startMenu === true ? "tab-highlight" : ""} onClick={() => setStartMenu(current => !current)}>
+                <img className="start-button-icon" src={windowsIcon} alt="windows icon"></img>
+                Start
+                </div>       
 
+                <div className="nav-tab">
+                    {tabs.map((tab) => {
+                        return <button className="tab-div border-shading" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => handleMinimiseFocus(tab)}>{tab.data}</button>
+                    })}
+                </div>
+
+                <div className="nav-clock">
+                    <Clock></Clock>
+                </div>
+
+            </div>
+
+            
         
             
         </div>

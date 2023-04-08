@@ -59,11 +59,11 @@ const Window = (props) => {
     return (
         <div className={props.minimise === true ? "minimised-window" : "window-wrapper"} id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"} onClick={() => {props.setWindow(props.thisId)}} style={{position: "absolute", top: y, left: x}}>
         <div className={windowSize === true ? "maximised-window" : "document-window"}>
-            <div className="window-nav" draggable onDragEnd={handleDragEnd}>
+            <div className={activeWindow === props.thisId ? "window-nav-selected": "window-nav"} draggable onDragEnd={handleDragEnd}>
                 <span className="window-nav-text">{props.data}</span>
-                <button onClick={() => props.handleMinimise(props.thisId)}>_</button>
-                <button onClick={maximiseWindow}>[]</button>
-                <button onClick={() => props.closeWindow(false)}>X</button>
+                <button className="nav-buttons" onClick={() => props.handleMinimise(props.thisId)}>_</button>
+                <button className="nav-buttons" onClick={maximiseWindow}>[]</button>
+                <button className="nav-buttons" onClick={() => props.closeWindow(false)}>X</button>
                 
                 
             </div>
@@ -71,9 +71,9 @@ const Window = (props) => {
             {props.data === "computer" && projects.map((project) => {
                 return (
                     <div className="window-item icon" onClick={() => props.addWindow(`WordPad - ${project.title}`)}>
-                    <img className="window-icon" src={folder} alt="folder"></img>
-                    <span className="window-item-title">{project.title}</span>
-                </div>
+                        <img className="window-icon" src={folder} alt="folder"></img>
+                        <span className="window-item-title">{project.title}</span>
+                    </div>
                 )
             })}
 
@@ -94,9 +94,14 @@ const Window = (props) => {
             </div>}
 
             {props.data !== "recycle_bin" && props.data !== "wordpad" && props.data !== "computer" && <div className="project-window-scroll">
-                {/* <h2>{selected.title}</h2>
-                <p>{selected.details}</p> 
-                map the array of pics/details into stages here*/}
+                <h1 className="project-title">{selected.title}</h1>
+
+                {selected.links.map((link) => {
+                    return <a href={link}>{link}</a>
+                })}
+                
+                <p className="project-details">{selected.details}</p> 
+               
                 {selected.stages.map((stage) => {
                     return <Stages project={stage}></Stages>
                 })}

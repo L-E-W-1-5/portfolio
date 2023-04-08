@@ -1,10 +1,16 @@
 .project-window{
     display: flex;
     flex-direction: row;
+    width: 98%;
   
+    align-items: center;
 }
 
 .project-image{
+    width: 50%;
+}
+
+.project-description{
     width: 50%;
 }
 

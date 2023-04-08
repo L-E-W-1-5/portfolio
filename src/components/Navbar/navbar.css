@@ -2,12 +2,18 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-  
+}
+
+.border-shading{
+    border-top: 3px solid rgb(228, 228, 228);
+    border-left: 3px solid rgb(228, 228, 228);
+    border-right: 3px solid rgb(85, 85, 85);
+    border-bottom: 3px solid rgb(72, 72, 72);
 }
 
 .nav-menu{
     background-color: rgb(187, 187, 187);
-    height: 45px;
+    height: 38px;
     position: fixed;
     bottom: 0px;
     width: 100vw;
@@ -15,10 +21,15 @@
 }
 
 .start-button{
-
+    background: rgb(187, 187, 187);
     margin: 2px 2px auto 2px;
-    height: 90%;
+    height: 70%;
     width: 77px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
 }
 
 .start-menu{
@@ -35,30 +46,51 @@
 }
 
 .nav-tab{
-    padding: 5px;
-    margin-left: 100px;
+    padding: 3px;
+    margin-left: 20px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap:10px;
+    gap:6px;
     align-items: center;
     justify-content: flex-start;
 }
 
 .tab-div{
     padding: 5px;
-    gap: 10px;
-    background: rgb(230, 230, 230);
-    height: 70%;
+    gap: 6px;
+    background: rgb(187, 187, 187);
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 170px;
     cursor: pointer;
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(0, 0, 0); */
+    
 }
 
 #tab-highlight{
-    border: 4px solid rgb(255, 255, 255);
+    background: rgb(222, 222, 222);
+    border-bottom: 3px solid rgb(228, 228, 228);
+    border-right: 3px solid rgb(228, 228, 228);
+    border-left: 3px solid rgb(85, 85, 85);
+    border-top: 3px solid rgb(72, 72, 72);
+}
+
+.nav-clock{
+    margin: auto 6px auto auto;
+    border: 1px solid black;
+    padding: 3px;
+    min-width: 50px;
+    border-bottom: 3px solid rgb(228, 228, 228);
+    border-right: 3px solid rgb(228, 228, 228);
+    border-left: 3px solid rgb(85, 85, 85);
+    border-top: 3px solid rgb(72, 72, 72);
+}
+
+.start-button-icon{
+    height: 23px;
+    width: 27px;
 }
