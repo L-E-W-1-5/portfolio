@@ -67,8 +67,14 @@
     width: 100%;
     max-width: 170px;
     cursor: pointer;
-    /* border: 1px solid rgb(0, 0, 0); */
-    
+    color: black;
+}
+
+.tab-text{
+    max-width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #tab-highlight{
