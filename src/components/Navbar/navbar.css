@@ -17,6 +17,7 @@
     position: fixed;
     bottom: 0px;
     width: 100vw;
+    max-width: 100vw;
     z-index: 5;
 }
 
@@ -54,6 +55,8 @@
     gap:6px;
     align-items: center;
     justify-content: flex-start;
+    flex-basis: 0;
+    flex-grow: 1;
 }
 
 .tab-div{
@@ -68,13 +71,20 @@
     max-width: 170px;
     cursor: pointer;
     color: black;
+
 }
 
 .tab-text{
-    max-width: 90%;
-    text-overflow: ellipsis;
+    margin-right: auto;
+    text-overflow: ellipsis; 
     white-space: nowrap;
+    max-width: 70%;
     overflow: hidden;
+}
+
+.tab-icon{
+    height: 15px;
+    margin-right: auto;
 }
 
 #tab-highlight{

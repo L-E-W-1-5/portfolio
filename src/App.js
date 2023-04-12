@@ -8,6 +8,7 @@ import {Navbar} from './components/Navbar/navbar.js'
 // import {Popup} from './components/Popup/popup.js';
 // import Window from './components/Window/Window.js';
 // import computer from './assets/computer.png';
+import executable from './assets/executable.png';
 import recycle from './assets/recycle.png';
 import wordpad from './assets/wordpad.png';
 import my_computer from './assets/my_computer_icon_new.png';
@@ -40,9 +41,27 @@ function App() {
   const addWindow = (info) => {
 
     let randomKey = Math.round(Math.random()*10000);
+    let icon;
+
+    switch(info){
+      case 'My Projects':
+        icon = my_computer
+      break;
+      case 'Wordpad':
+        icon = wordpad
+      break;
+      case 'recycle_bin':
+        icon = recycle
+      break;
+      default:
+        icon = executable
+      break;
+    }
+console.log(icon)
     
     addWindows(oldArray => [...oldArray, {key: randomKey,
                                           data: info,
+                                          icon: icon,
                                           minimised: false}]);
     showWindow(randomKey);
   }
