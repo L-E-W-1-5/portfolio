@@ -58,8 +58,8 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
                 </div>       
 
                 <div className="nav-tab">
-                    {tabs.map((tab) => {
-                        return <button className="tab-div border-shading" id={newTarget === tab.key ? "tab-highlight" : ""} onClick={() => handleMinimiseFocus(tab)}><p className="tab-text">{tab.data}</p></button>
+                    {tabs.map((tab, k) => {
+                        return <button className="tab-div border-shading" id={newTarget === tab.key ? "tab-highlight" : ""} key={k} onClick={() => handleMinimiseFocus(tab)}><p className="tab-text">{tab.data}</p></button>
                     })}
                 </div>
 

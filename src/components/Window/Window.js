@@ -44,8 +44,14 @@ const Window = (props) => {
 
   const handleDragEnd = (e) => {
     console.log(e);
-    setX(e.clientX - 260);
-    setY(e.clientY);
+    if (e.type.includes('drag')){
+        setX(e.clientX - 460);
+        setY(e.clientY);
+        return
+    }
+    const touch = e.targetTouches[0];
+    setX(touch.clientX - 460)
+    setY(touch.clientY)
   };
 
   return (
@@ -57,7 +63,7 @@ const Window = (props) => {
       onClick={() => {
         props.setWindow(props.thisId);
       }}
-      style={{ position: "absolute", top: y, left: x }}
+      style={{ position: "absolute", top: y + 'px', left: x + 'px' }}
     >
       <div
         className={windowSize === true ? "maximised-window" : "document-window"}
@@ -90,10 +96,11 @@ const Window = (props) => {
         
         <div className="window-contents" id={props.data === "My Projects" && "projects-wrap"}>
           {props.data === "My Projects" &&
-            projects.map((project) => {
+            projects.map((project, k) => {
               return (
                 <div 
                   className="window-item icon"
+                  key={k}
                   onClick={() => props.addWindow(`WordPad - ${project.title}`)}
                 >
                   <img className="window-icon" src={folder} alt="folder"></img>
