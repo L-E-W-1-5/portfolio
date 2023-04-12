@@ -10,9 +10,10 @@ body {
 
 .desktop-icons{
     display: block;
-    margin: 1%;
+    margin: 1% auto 0% 1%;
     width: 4%;
     height: 4%;
+    min-width: 65px;
 }
 
 .windows-container{
@@ -23,4 +24,9 @@ body {
 
 .icon:hover{
     cursor: pointer;
+}
+
+.desktop-icon-text{
+    margin-left: 1%;
+    color: white;
 }

@@ -60,19 +60,56 @@ function App() {
 
   return (
     <div>
-    <div className='windows-container'>
-      {window && <MultipleWindows activeKey={window} closeWindow={closeWindow} windows={windows} addWindow={addWindow} 
-        setNewTarget={setNewTargetWindow} newTarget={newTargetWindow} minimise={handleMinimise}></MultipleWindows>}
+      <div className="windows-container">
+        {window && (
+          <MultipleWindows
+            activeKey={window}
+            closeWindow={closeWindow}
+            windows={windows}
+            addWindow={addWindow}
+            setNewTarget={setNewTargetWindow}
+            newTarget={newTargetWindow}
+            minimise={handleMinimise}
+          ></MultipleWindows>
+        )}
       </div>
+
       <div className="main-container">
-      <img className="desktop-icons icon" src={my_computer} alt="my_computer" onClick={() => addWindow("computer")}></img>
-      <img className="desktop-icons icon" src={recycle} alt="recycle_bin" onClick={() => addWindow("recycle_bin")}></img>
-      <img className="desktop-icons icon" src={wordpad} alt="wordpad" onClick={() => addWindow("wordpad")}></img>
-      
-      
+        <div className="desktop-icon-container">
+          <img
+            className="desktop-icons icon"
+            src={my_computer}
+            alt="my_computer"
+            onClick={() => addWindow("My Projects")}
+          ></img>
+          <p className="desktop-icon-text">My Projects</p>
+        </div>
+
+        <div>
+          <img
+            className="desktop-icons icon"
+            src={recycle}
+            alt="recycle_bin"
+            onClick={() => addWindow("recycle_bin")}
+          ></img>
+        </div>
+        
+        <div>
+          <img
+            className="desktop-icons icon"
+            src={wordpad}
+            alt="wordpad"
+            onClick={() => addWindow("Wordpad")}
+          ></img>
+        </div>
       </div>
-      
-      <Navbar tabs={windows} setNewTarget={setNewTargetWindow} newTarget={newTargetWindow} minimise={handleMinimise}></Navbar>
+
+      <Navbar
+        tabs={windows}
+        setNewTarget={setNewTargetWindow}
+        newTarget={newTargetWindow}
+        minimise={handleMinimise}
+      ></Navbar>
     </div>
   );
 }
