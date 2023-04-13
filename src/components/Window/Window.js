@@ -42,7 +42,7 @@ const Window = (props) => {
     }
 
     const touch = e.targetTouches[0];
-    setX(touch.clientX - 100)
+    setX(touch.clientX - 200)
     setY(touch.clientY)
   };
 
@@ -105,7 +105,7 @@ const Window = (props) => {
                   onClick={() => props.addWindow(`WordPad - ${project.title}`)}
                 >
                   <img className="window-icon" src={folder} alt="folder"></img>
-                  <span className="window-item-title">{project.title}</span>
+                  <div className="window-item-title">{project.title}</div>
                 </div>
               );
             })}

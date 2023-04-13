@@ -29,8 +29,9 @@
 .start-text{
     rotate: -90deg;
     white-space: nowrap;
-    margin-left: 15px;
-    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+   
 }
 
 .start-menu-list{
