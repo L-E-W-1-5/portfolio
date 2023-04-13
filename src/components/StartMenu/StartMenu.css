@@ -1,0 +1,31 @@
+.start-menu{
+    width: 20%;
+    position: absolute;
+    height: 30vh;
+    background: white;
+    left: 0px;
+    top: -31vh;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly;
+    align-items: center; */
+    background:  rgb(187, 187, 187);
+    border: 3px solid black;
+    margin-left: 50px;
+}
+
+.start-menu-title{
+   rotate: -90deg;
+   /* height: 100%; */
+   /* margin-right: auto auto auto 5px; */
+    height: 30%;
+    width: 100%;
+   border: 2px solid black;
+}
+
+.start-menu-list{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%
+}
