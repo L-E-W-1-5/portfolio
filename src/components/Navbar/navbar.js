@@ -11,7 +11,7 @@ import {StartMenu} from '../StartMenu/StartMenu.js';
 
 
 
-export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
+export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
 
     const [startMenu, setStartMenu] = useState(false);
    
@@ -31,7 +31,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
 
     return (
       <div className="nav-menu border-shading">
-        {startMenu && <StartMenu setStart={setStartMenu}></StartMenu>}
+        {startMenu && <StartMenu addWindow={addWindow} setStart={setStartMenu}></StartMenu>}
 
         <div className="nav-container">
           <div
@@ -52,7 +52,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise}) {
               return (
                 <button
                   className="tab-div border-shading"
-                  id={newTarget === tab.key ? "tab-highlight" : ""}
+                  id={newTarget === tab.key && "tab-highlight"}
                   key={k}
                   onClick={() => handleMinimiseFocus(tab)}
                 >

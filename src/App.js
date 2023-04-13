@@ -132,6 +132,7 @@ function App() {
         setNewTarget={setNewTargetWindow}
         newTarget={newTargetWindow}
         minimise={handleMinimise}
+        addWindow={addWindow}
       ></Navbar>
     </div>
   );

@@ -1,8 +1,9 @@
 import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf';
 import {useEffect, useRef} from 'react';
 import './StartMenu.css';
+import wordpad from '../../assets/wordpad.png';
 
-export const StartMenu = ({setStart}) => {
+export const StartMenu = ({setStart, addWindow}) => {
 
     const wrapperRef = useRef(null);
     useOutsideAlert(wrapperRef);
@@ -22,12 +23,15 @@ export const StartMenu = ({setStart}) => {
     }
 
     return (
-      <div ref={wrapperRef} className="start-menu">
+      <div ref={wrapperRef} className="start-menu border-shading">
         <div className="start-menu-title">
             <h2 className="start-text" >Windows 95</h2>
         </div>
         <div className="start-menu-list">
-          <a href="#about_me_link">About Me</a>
+          <div className="start-menu-item">
+            <img className="start-icon" src={wordpad} alt=".txt"></img>
+            <p className="start-menu-text" onClick={() => {addWindow('About Me')}}>About Me</p>
+          </div>
           <a href="#projects_link">Projects</a>
           <a href={pdf}>CV</a>
         </div>
