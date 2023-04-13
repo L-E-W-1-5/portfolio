@@ -32,7 +32,7 @@ export const projects = [
         stages: [
                     {
                         photo: getStarted,
-                        description: "This is the first page you come to when navigating to the site, it gives some information as to the function of the app and allows the user to either login or continue into the site first and then get prompted to login when they try to initiate functionality that requires the user to be logged in."
+                        description: "This is the first page you come to when navigating to the site, it gives some information as to the function of the app and allows the user to either login or continue into the site first."
                     },
                     {
                         photo: dashboard,
@@ -40,7 +40,7 @@ export const projects = [
                     },
                     {
                         photo: createTripForm,
-                        description: "This is a multipage form created with a custom hook which takes in 5 separate forms and adds them each into an array, the index of which is what gets incrimented to move to the next page/form. The useForm hook was used along with the useFieldArray hook, making it possible to create forms with a user defined amount of entries for specific fields. This is for the user to create for example, 3 possible destinations for the group to later vote on. A challenge faced with the form was needing to create a variable number of items on the itinerary each with a variable number of possible activities, so you could create 5 outings to restaurants, each with 5 choices for the group to vote on. Arrays within arrays with buttons to add/remove fields. It became quite complicated!"
+                        description: "This is a multipage form created with a custom hook which takes in 5 separate forms and adds them each into an array, the index of which is what gets incrimented to move to the next page/form. The useForm hook was used along with the useFieldArray hook, making it possible to create forms with a user defined amount of entries for specific fields. This is for the user to create for example, 3 possible destinations for the group to later vote on. A challenge faced with the form was needing to create a variable number of items on the itinerary each with a variable number of possible activities."
                     }
                     
                 ]

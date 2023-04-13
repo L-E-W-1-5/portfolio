@@ -71,7 +71,8 @@ const Window = (props) => {
             activeWindow === props.thisId ? "window-nav-selected" : "window-nav"
           }
           draggable
-          onTouchEnd={handleDragEnd}
+          onTouchMove={handleDragEnd}
+        //   onTouchEnd={handleDragEnd}
           onDragEnd={handleDragEnd}
           onMouseMove={handleMouseDown}
         >
