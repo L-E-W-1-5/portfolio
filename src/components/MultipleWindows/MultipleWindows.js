@@ -19,7 +19,7 @@ const MultipleWindows = ({windows, closeWindow, activeKey, addWindow, setNewTarg
 
                 return (
                     
-                <Window key={window.key} thisId={window.key} setWindow={setNewTarget} offset={axis} activeWindow={newTarget} data={window.data} 
+                <Window key={window.key} thisId={window.key} icon={window.icon} setWindow={setNewTarget} offset={axis} activeWindow={newTarget} data={window.data} 
                 closeWindow={() => closeWindow(window.key)} addWindow={addWindow} minimise={window.minimised} handleMinimise={minimise}></Window>
                 )
             })}

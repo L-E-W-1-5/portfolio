@@ -6,26 +6,18 @@ import cv from '../../data/Screenshot 2023-03-28 211658.png'
 import cv2 from '../../data/page_2.png';
 import {Stages} from '../Stages/stages.js';
 
-import { Document, Page, pdfjs } from 'react-pdf';
-import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf'
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 
 
 const Window = (props) => {
   const [windowSize, setWindowSize] = useState(false);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1); //setting 1 to show fisrt page
-  //const [projectSelected, setProjectSelected] = useState()
+
   const [location, setLocation] = useState({x: props.offset * 40, y: props.offset * 40})
     
   const [x, setX] = useState(props.offset * 40);
   const [y, setY] = useState(props.offset * 40);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
-  console.log(props.data)
+
 
   let selected;
 
@@ -37,19 +29,11 @@ const Window = (props) => {
 
   let activeWindow = props.activeWindow;
 
-  //TODO: - get the correct title and navbar title showing for the projects.
-
   const maximiseWindow = () => {
     setWindowSize((current) => !current);
   };
 
   const handleDragEnd = (e) => {
-    console.log("end", e.clientX, e.clientY);
-    console.log(e.clientX - location.x, e.clientY - location.y)
-  
-    const ball = document.getElementById('ball')
-    let shiftX = ball.getBoundingClientRect().left;
-    console.log(shiftX, ball)
 
     if (e.type.includes('drag')){
         setX(e.pageX - location.x);
@@ -57,66 +41,16 @@ const Window = (props) => {
         return
     }
 
-    console.log(e)
     const touch = e.targetTouches[0];
     setX(touch.clientX)
     setY(touch.clientY)
   };
 
-  const handleCoords = (e) => {
-    const ball = document.getElementById('ball')
-    let shiftX = ball.getBoundingClientRect().left;
-    //console.log(shiftX, ball)
-    ball.style.left = e.pageX - shiftX + 'px'
-  }
-
-  const handleDragStart = (e) => {
-
-    console.log("start", e.clientX, e.clientY)
-    // const newLoc = {x: e.clientX, y: e.clientY}
-    // setLocation(newLoc)
-  }
-
-//   const handleDragAgain = (e) => {
-//     setLocation({x: e.clientX, y: e.clientY});
-//     window.addEventListener("mousemove", handleDrag)
-
-//     window.addEventListener("mouseup", () => {
-//         window.removeEventListener("mousemove", handleDrag)
-//     })
-//   }
-
   const handleMouseDown = (e) => {
 
-    //console.log(e.clientX)
-    
     setLocation({x: e.clientX, y: e.clientY});
-    // window.addEventListener("mousemove", handleDrag)
-    // window.addEventListener("mouseup", () => {
-    //     window.removeEventListener("mousemove", handleDrag)
-    // })
   }
 
-//   const handleStopMove = (e) => {
-//     window.addEventListener("mouseup", () => {
-//         window.removeEventListener("mousemove", handleDrag)
-//     })
-//     setX(e.clientX - location.x);
-//     setY(e.clientY);
-
-//   }
-
-//   const handleDrag = (e) => {
-//     //console.log(e.clientX)
-//     //setLocation({x: e.clientX, y: e.clientY});
-
-//     const newLoc = {x: e.clientX - location.x, y: location.y - e.clientY}
-//     setLocation(newLoc)
-//     console.log(location.x, location.y)
-//     setX(e.clientX - location.x)
-//     setY(e.clientY)// - location.y)
-//     setValue(value + valueFromMouseDelta(location))
-//   }
 
   return (
     <div
@@ -136,16 +70,12 @@ const Window = (props) => {
           className={
             activeWindow === props.thisId ? "window-nav-selected" : "window-nav"
           }
-          id="ball"
           draggable
           onTouchEnd={handleDragEnd}
           onDragEnd={handleDragEnd}
-          onDragStart={handleDragStart}
           onMouseMove={handleMouseDown}
-          //onDrag={handleDragAgain}
-          //onMouseUp={handleStopMove}
-          onMouseDown={handleCoords}
         >
+          <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
           <span className="window-nav-text">{props.data}</span>
           <button
             className="nav-buttons"
@@ -188,17 +118,7 @@ const Window = (props) => {
 
           {props.data === "recycle_bin" && (
             <div className="cv-window">
-              <Document
-                file={pdf}
-                onLoadSuccess={onDocumentLoadSuccess}
-                options={{ workerSrc: "/pdf.worker.js" }}
-              >
-                <Page pageNumber={pageNumber} />
-                <Page pageNumber={numPages} />
-              </Document>
-              <p>
-                Page {pageNumber || (numPages ? 1 : "--")} of {numPages || "--"}
-              </p>
+              
             </div>
           )}
 
