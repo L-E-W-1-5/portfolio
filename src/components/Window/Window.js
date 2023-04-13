@@ -42,7 +42,7 @@ const Window = (props) => {
     }
 
     const touch = e.targetTouches[0];
-    setX(touch.clientX)
+    setX(touch.clientX - 100)
     setY(touch.clientY)
   };
 
