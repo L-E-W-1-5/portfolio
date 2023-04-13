@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: row;
     width: 98%;
-  
     align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .project-window {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 
 .project-image{
     width: 50%;

@@ -57,8 +57,8 @@ const Window = (props) => {
         return
     }
 
+    console.log(e)
     const touch = e.targetTouches[0];
-    
     setX(touch.clientX)
     setY(touch.clientY)
   };
@@ -66,7 +66,7 @@ const Window = (props) => {
   const handleCoords = (e) => {
     const ball = document.getElementById('ball')
     let shiftX = ball.getBoundingClientRect().left;
-    console.log(shiftX, ball)
+    //console.log(shiftX, ball)
     ball.style.left = e.pageX - shiftX + 'px'
   }
 
@@ -88,7 +88,7 @@ const Window = (props) => {
 
   const handleMouseDown = (e) => {
 
-    console.log(e.clientX)
+    //console.log(e.clientX)
     
     setLocation({x: e.clientX, y: e.clientY});
     // window.addEventListener("mousemove", handleDrag)

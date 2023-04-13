@@ -24,7 +24,7 @@ export const StartMenu = ({setStart}) => {
     return (
       <div ref={wrapperRef} className="start-menu">
         <div className="start-menu-title">
-            <h2>Windows 95</h2>
+            <h2 className="start-text" >Windows 95</h2>
         </div>
         <div className="start-menu-list">
           <a href="#about_me_link">About Me</a>

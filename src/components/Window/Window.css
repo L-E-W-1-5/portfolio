@@ -147,8 +147,8 @@
 
 .window-item-title{
     margin: auto auto auto 15px;
-    max-height: 20px;;
-    
+    max-height: 20px;
+    overflow: ellipses;
 }
 
 .window-icon{

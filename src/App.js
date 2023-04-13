@@ -57,7 +57,7 @@ function App() {
         icon = executable
       break;
     }
-console.log(icon)
+//console.log(icon)
     
     addWindows(oldArray => [...oldArray, {key: randomKey,
                                           data: info,
@@ -104,22 +104,26 @@ console.log(icon)
           <p className="desktop-icon-text">My Projects</p>
         </div>
 
-        <div>
+        
+        <div className="desktop-icon-container">
           <img
             className="desktop-icons icon"
             src={recycle}
             alt="recycle_bin"
             onClick={() => addWindow("recycle_bin")}
           ></img>
-        </div>
+          <p className="desktop-icon-text">Recycle Bin</p>
+          </div>
         
-        <div>
+        
+          <div className="desktop-icon-container">
           <img
             className="desktop-icons icon"
             src={wordpad}
             alt="wordpad"
             onClick={() => addWindow("Wordpad")}
           ></img>
+          <p className="desktop-icon-text">Resume</p>
         </div>
       </div>
 
