@@ -35,31 +35,34 @@
 }
 
 .nav-tab{
-    /* margin: 2px 20px 2px 2px; */
     padding: 3px;
     margin-left: 20px;
     margin-right: 10px;
-    /* margin-right: 10px;  */
     display: flex;
-    /* flex-direction: row; */
-    width: 75vw;
+    /* width: 60vw; */
+    width: 90vw;
     gap:6px;
-    /* align-items: center;
-    justify-content: flex-start;
-    flex-basis: 0;
-    flex-grow: 1; */
+}
+
+@media only screen and (max-width: 900px) {
+    .nav-tab{
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-tab{
+        width: 60vw;
+    }
 }
 
 .tab-div{
     padding: 5px;
-    
-    /* gap: 6px; */
     background: rgb(187, 187, 187);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 100%; */
     max-width: 170px;
     cursor: pointer;
     color: black;

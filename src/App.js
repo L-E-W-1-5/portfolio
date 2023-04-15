@@ -1,17 +1,11 @@
 import './App.css';
 import {useState} from 'react';
-import {Navbar} from './components/Navbar/navbar.js'
-// import {Header} from './components/Header/header.js'
-// import {AboutMe} from './components/AboutMe/aboutme.js'
-// import {PortfolioList} from './components/PortfolioList/portfoliolist.js'
-// import {CV} from './components/CV/cv.js'
-// import {Popup} from './components/Popup/popup.js';
-// import Window from './components/Window/Window.js';
-// import computer from './assets/computer.png';
+import {Navbar} from './components/Navbar/navbar.js';
 import executable from './assets/executable.png';
 import recycle from './assets/recycle.png';
 import wordpad from './assets/wordpad.png';
 import my_computer from './assets/my_computer_icon_new.png';
+// import notepad from './assets/notepad.png';
 import MultipleWindows from './components/MultipleWindows/MultipleWindows.js';
 
 function App() {
@@ -23,13 +17,13 @@ function App() {
 
 
 
-  const handleMinimise = (w) => {
+  const handleMinimise = (targetKey) => {
     
     let windowsOpen = [...windows];
 
     for (let i = 0; i < windowsOpen.length; i++){
 
-      if (windowsOpen[i].key === w){
+      if (windowsOpen[i].key === targetKey){
 
         windowsOpen[i].minimised = !windowsOpen[i].minimised;
       }
@@ -50,6 +44,9 @@ function App() {
       case 'Wordpad':
         icon = wordpad
       break;
+      case 'About Me':
+        icon = wordpad
+      break;
       case 'recycle_bin':
         icon = recycle
       break;
@@ -57,7 +54,6 @@ function App() {
         icon = executable
       break;
     }
-//console.log(icon)
     
     addWindows(oldArray => [...oldArray, {key: randomKey,
                                           data: info,
@@ -121,9 +117,9 @@ function App() {
             className="desktop-icons icon"
             src={wordpad}
             alt="wordpad"
-            onClick={() => addWindow("Wordpad")}
+            onClick={() => addWindow("About Me")}
           ></img>
-          <p className="desktop-icon-text">Resume</p>
+          <p className="desktop-icon-text">About Me</p>
         </div>
       </div>
 

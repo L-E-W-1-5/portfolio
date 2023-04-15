@@ -34,9 +34,10 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
         {startMenu && <StartMenu addWindow={addWindow} setStart={setStartMenu}></StartMenu>}
 
         <div className="nav-container">
+
           <div
             className="start-button border-shading"
-            id={startMenu === true ? "tab-highlight" : ""}
+            id={startMenu === true ? "tab-highlight" : undefined}
             onClick={() => setStartMenu((current) => !current)}
           >
             <img
@@ -52,7 +53,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
               return (
                 <button
                   className="tab-div border-shading"
-                  id={newTarget === tab.key && "tab-highlight"}
+                  id={newTarget === tab.key ? "tab-highlight" : undefined}
                   key={k}
                   onClick={() => handleMinimiseFocus(tab)}
                 >
@@ -66,6 +67,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
           <div className="nav-clock">
             <Clock></Clock>
           </div>
+
         </div>
       </div>
     );

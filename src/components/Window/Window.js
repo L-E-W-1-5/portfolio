@@ -2,8 +2,8 @@ import './Window.css';
 import {useState} from 'react';
 import folder from '../../assets/open_folder.png'
 import {projects} from '../../data/projects.js';
-import cv from '../../data/Screenshot 2023-03-28 211658.png'
-import cv2 from '../../data/page_2.png';
+// import cv from '../../data/Screenshot 2023-03-28 211658.png'
+// import cv2 from '../../data/page_2.png';
 import {Stages} from '../Stages/stages.js';
 
 
@@ -16,7 +16,6 @@ const Window = (props) => {
     
   const [x, setX] = useState(props.offset * 40);
   const [y, setY] = useState(props.offset * 40);
-
 
 
   let selected;
@@ -52,6 +51,8 @@ const Window = (props) => {
   }
 
 
+
+
   return (
     <div
       className={
@@ -72,9 +73,10 @@ const Window = (props) => {
           }
           draggable
           onTouchMove={handleDragEnd}
-        //   onTouchEnd={handleDragEnd}
+       
           onDragEnd={handleDragEnd}
           onMouseMove={handleMouseDown}
+          
         >
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
           <span className="window-nav-text">{props.data}</span>
@@ -95,7 +97,7 @@ const Window = (props) => {
           </button>
         </div>
         
-        <div className="window-contents" id={props.data === "My Projects" && "projects-wrap"}>
+        <div className="window-contents" id={props.data === "My Projects" ? "projects-wrap" : undefined}>
           {props.data === "My Projects" &&
             projects.map((project, k) => {
               return (
@@ -110,10 +112,9 @@ const Window = (props) => {
               );
             })}
 
-          {props.data === "Wordpad" && (
+          {props.data === "About Me" && (
             <div className="cv-window">
-              <img className="cv-image" src={cv} alt="cv"></img>
-              <img className="cv-image" src={cv2} alt="cv"></img>
+            
             </div>
           )}
 
@@ -124,19 +125,19 @@ const Window = (props) => {
           )}
 
           {props.data !== "recycle_bin" &&
-            props.data !== "Wordpad" &&
+            props.data !== "About Me" &&
             props.data !== "My Projects" && (
               <div className="project-window-scroll">
                 <h1 className="project-title">{selected.title}</h1>
 
-                {selected.links.map((link) => {
-                  return <a href={link}>{link}</a>;
+                {selected.links.map((link, k) => {
+                  return <a key={k} href={link}>{link}</a>;
                 })}
 
                 <p className="project-details">{selected.details}</p>
 
-                {selected.stages.map((stage) => {
-                  return <Stages project={stage}></Stages>;
+                {selected.stages.map((stage, k) => {
+                  return <Stages key={k} project={stage}></Stages>;
                 })}
                 {/* <Stages project={selected}></Stages> */}
               </div>

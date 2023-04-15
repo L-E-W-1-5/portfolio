@@ -1,6 +1,21 @@
 import createTripForm from '../data/travel_herd/create_trip_form.png';
 import dashboard from '../data/travel_herd/dashboard.png';
 import getStarted from '../data/travel_herd/get_started_page.png';
+import joinTrip from '../data/travel_herd/join_trip.png';
+import viewTrips from '../data/travel_herd/view_trips.png';
+import createMulti from '../data/travel_herd/create_trip_multioption.PNG';
+import tripDetails from '../data/travel_herd/trip_details.png';
+
+import mainPage from '../data/SOCATG/main_page.PNG';
+import englishSearch from '../data/SOCATG/english_search.PNG';
+import englishResults from '../data/SOCATG/english_results.PNG';
+import spanishResults from '../data/SOCATG/spanish_results.PNG';
+
+import mainScreen from '../data/cs_game/main_screen.PNG';
+import choosePlayers from '../data/cs_game/choose_players.PNG';
+import hangman from '../data/cs_game/hangman.PNG';
+import tetris from '../data/cs_game/tetris.PNG';
+
 
 
 export const projects = [
@@ -13,12 +28,20 @@ export const projects = [
                 ],
         stages: [
                     {
-                        photo: createTripForm,
-                        description: "This is a multipage form created with a custom hook which takes in 5 separate forms and adds them each into an array, the index of which is what gets incrimented to move to the next page/form. The useForm hook was used along with the useFieldArray hook, making it possible to create forms with a user defined amount of entries for specific fields. This is for the user to create for example, 3 possible destinations for the group to later vote on. A challenge faced with the form was needing to create a variable number of items on the itinerary each with a variable number of possible activities, so you could create 5 outings to restaurants, each with 5 choices for the group to vote on. Arrays within arrays with buttons to add/remove fields. It became quite complicated!"
+                        photo: mainPage,
+                        description: ""
                     },
                     {
-                        photo: dashboard,
-                        description: "This is the main dashboard for the app, the screen you reach after logging in. This shows the 3 main functions of the app, creating a new trip, joining a trip and viewing trips you have already joined"
+                        photo: englishSearch,
+                        description: ""
+                    },
+                    {
+                        photo: englishResults,
+                        description: ""
+                    },
+                    {
+                        photo: spanishResults,
+                        description: ""
                     }
                 ]
     },
@@ -41,7 +64,23 @@ export const projects = [
                     {
                         photo: createTripForm,
                         description: "This is a multipage form created with a custom hook which takes in 5 separate forms and adds them each into an array, the index of which is what gets incrimented to move to the next page/form. The useForm hook was used along with the useFieldArray hook, making it possible to create forms with a user defined amount of entries for specific fields. This is for the user to create for example, 3 possible destinations for the group to later vote on. A challenge faced with the form was needing to create a variable number of items on the itinerary each with a variable number of possible activities."
-                    }
+                    },
+                    {
+                        photo: createMulti,
+                        description: ""
+                    },
+                    {
+                        photo: joinTrip,
+                        description: ""
+                    },
+                    {
+                        photo: viewTrips,
+                        description: ""
+                    },
+                    {
+                        photo: tripDetails,
+                        description: ""
+                    },
                     
                 ]
     },
@@ -54,12 +93,20 @@ export const projects = [
                 ],
         stages: [
                     {
-                        photo: createTripForm,
-                        description: "This is a multipage form created with a custom hook which takes in 5 separate forms and adds them each into an array, the index of which is what gets incrimented to move to the next page/form. The useForm hook was used along with the useFieldArray hook, making it possible to create forms with a user defined amount of entries for specific fields. This is for the user to create for example, 3 possible destinations for the group to later vote on. A challenge faced with the form was needing to create a variable number of items on the itinerary each with a variable number of possible activities, so you could create 5 outings to restaurants, each with 5 choices for the group to vote on. Arrays within arrays with buttons to add/remove fields. It became quite complicated!"
+                        photo: mainScreen,
+                        description: ""
                     },
                     {
-                        photo: dashboard,
-                        description: "This is the main dashboard for the app, the screen you reach after logging in. This shows the 3 main functions of the app, creating a new trip, joining a trip and viewing trips you have already joined"
+                        photo: choosePlayers,
+                        description: ""
+                    },
+                    {
+                        photo: hangman,
+                        description: ""
+                    },
+                    {
+                        photo: tetris,
+                        description: ""
                     }
                 ]
     }
