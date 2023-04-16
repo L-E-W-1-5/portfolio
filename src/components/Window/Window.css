@@ -153,7 +153,34 @@
 
 .project-title{
     margin: auto;
-   
     text-decoration: underline;
 }
 
+.about-me-window{
+    width: 100%;
+    padding: 30px;
+    overflow-y: scroll;
+}
+
+.about-me-title{
+    margin-left: 5%;
+    margin-bottom: 5%;
+    text-decoration: underline;
+    align-self:flex-end;
+}
+
+.about-me-text{
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+.about-me-photo{
+    height: 250px;
+    border-radius: 50px;
+}
+
+.about-me-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

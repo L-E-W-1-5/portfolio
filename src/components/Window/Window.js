@@ -5,7 +5,7 @@ import {projects} from '../../data/projects.js';
 // import cv from '../../data/Screenshot 2023-03-28 211658.png'
 // import cv2 from '../../data/page_2.png';
 import {Stages} from '../Stages/stages.js';
-
+import {aboutMe} from '../../data/aboutme';
 
 
 
@@ -113,8 +113,12 @@ const Window = (props) => {
             })}
 
           {props.data === "About Me" && (
-            <div className="cv-window">
-            
+            <div className="about-me-window">
+              <div className="about-me-header">
+                <img className="about-me-photo" src={aboutMe.photo} alt="my profile img"></img>
+                <h2 className="about-me-title">About Me..</h2>
+              </div>
+              <p className="about-me-text">{aboutMe.description}</p>
             </div>
           )}
 

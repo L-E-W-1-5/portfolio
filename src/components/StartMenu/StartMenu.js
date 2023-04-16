@@ -1,4 +1,4 @@
-import pdf from '../../data/Lewis Wootton CV.pdf';
+import pdf from '../../data/Lewis CV.pdf';
 import {useEffect, useRef} from 'react';
 import './StartMenu.css';
 //import wordpad from '../../assets/wordpad.png';

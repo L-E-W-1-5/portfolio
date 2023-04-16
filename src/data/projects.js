@@ -22,26 +22,26 @@ export const projects = [
     {
         title: "School Of Code Across The Globe",
         links: ["https://github.com/L-E-W-1-5/Week_9_Project"],
-        details: "A group project created with a team of my peers over a weeklong period",
+        details: "This was a group project created with a team of 4 other students at the School Of Code over just a weeklong period. In this time the 4 of us managed to create a React front end, an Express backend and a Postgres database. From the entire cohort of over 130 students we were the only team which managed to also deploy the application. An achievement that wasn't set as a requirement at the beginning of the project. \nThe brief was to create something that would help future bootcampers. We came up with the idea to create an app aimed at student who weren't native English speakers. The premise was to have a database of common coding terms translated into other languages along with definitions, an example, an image and links for further reading. As a stretch goal we would have liked it to be an app that perhaps groups of students could log in and could add their own terms they had learnt which would then automatically be translated into the other languages for other members of the group. After many sprints, retros and iterations we eventually settled for creating the app without the ability to log in but that everyone could access and add translations for other bootcampers. We made the MVP with 4 languages, a search function for either english or for one of the foreign languages to see if the term had already been added.",
         photos: [
                     createTripForm
                 ],
         stages: [
                     {
                         photo: mainPage,
-                        description: ""
+                        description: "This is the first page the user sees when they visit the site, it prompts the user to select their native language before being directed to the main page where searches can be made."
                     },
                     {
                         photo: englishSearch,
-                        description: ""
+                        description: "This is the page a user is directed to after selecting English as their native language. Notice it just has 1 search bar since the user will only be searching in English for their definition. Other functionality includes the ablility to get all definitions from the database, to add a new entry to the database, to sort the results in the order of what week during the course the topic was covered and to show favourites. In the top right corner the user can choose to change the language they are using at any time."
                     },
                     {
                         photo: englishResults,
-                        description: ""
+                        description: "Once a search has been made, either using the 'get all' button or by searching a particular word (or part of a word), these are the results that will be shown after a successful search. There is added functionality added to each result including the ability to edit the resource, favourite the resource (to retrieve it faster the next time) or to delete the resource."
                     },
                     {
                         photo: spanishResults,
-                        description: ""
+                        description: "The results of a foreign language search show the user the same set of results but in their chosen language, along with the english translation. When a foreign language is selected, an extra search bar is shown, this is so that the user can choose whether to search for the english name or the name in their own language."
                     }
                 ]
     },
@@ -67,19 +67,19 @@ export const projects = [
                     },
                     {
                         photo: createMulti,
-                        description: ""
+                        description: "An example of one of the multi-option forms, the user can add and remove fields as necessary."
                     },
                     {
                         photo: joinTrip,
-                        description: ""
+                        description: "This is where the user is directed after recieving an email inviting them to join a trip. The email includes a link, their code to join and their username. Before joining, the user will have been prompted to create an account, it is this new account that will be linked with the trip after the correct code and username is entered. Now whenever the user visits the site, their details along with any trips joined will be automatically retrieved using Auth0 to secure the information."
                     },
                     {
                         photo: viewTrips,
-                        description: ""
+                        description: "After either creating or joining a trip, the trip will appear here, a custom carousel was created using ref's to navigate across the trips if the user was a part of quite a few."
                     },
                     {
                         photo: tripDetails,
-                        description: ""
+                        description: "After clicking on a trip from the View Trips page, the user is brought here. This is where the details of the trip are displayed for the user and where votes can be cast and results of votes shown."
                     },
                     
                 ]
@@ -87,26 +87,26 @@ export const projects = [
     {
         title: "C# WPF Games",
         links: ["https://github.com/L-E-W-1-5/hangman_tetris"],
-        details: "A WPF application created as a way to learn more about the C# language, how to create WPF applications and how XAML is written.",
+        details: "A WPF application created as a way to learn more about the C# language, how to create WPF applications and how XAML is written. User profiles and scores are saved and retrieved from a text file, created when the first user creates a profile, additional profiles and scores are added to the file when desired. There are 2 games the player can choose from, Hangman, which was an early game i made as a console application, now converted to WPF. Hangman is 1 of the apps i have made that has gone through many iterations over time as i have learnt better ways in which to accomplish something, for example when i learned LINQ I came back to Hangman and implimented LINQ to do the searching for the letters within a certain word. The other is a Tetris game I first created using an online tutorial but have since revisited many times to break it down, modify it, add features and rebuild it. Tetris was an enormous learning experience. It taught me a lot about the use of arrays to store images which can then be layed out onto a canvas. It also taught me a lot about asynchronous programming and how this can be manipulated to simulate game speed, updating the drop of a block at varying intervals. Learning about the use of an offset to move the blocks around the grid and rotate them was also amazing to learn, once you have the offset you can just add those coordinates to the block and regardless of what index of rotation the block is in, just add the offset and it will be positioned correctly.",
         photos: [
                     createTripForm
                 ],
         stages: [
                     {
                         photo: mainScreen,
-                        description: ""
+                        description: "The main screen the user comes to when they open the game.exe. In fairness it still needs a bit of TLC but I was focussed mainly on the functionality and bringing the games together was more of an after thought and so proved to be quite a challenge. The user must either select or create a profile before selecting one of the games or can view the highscores of both games."
                     },
                     {
                         photo: choosePlayers,
-                        description: ""
+                        description: "After entering the Hangman game the user/s are prompted to select whether it is a 1 player game with the computer selecting words from a huge selection of words in a file included in the app, or if they wish to play a 2 player game against a friend and take turns selecting and guessing the words."
                     },
                     {
                         photo: hangman,
-                        description: ""
+                        description: "The main screen for a game of Hangman, the user can either use the keys on their keyboard or the buttons on-screen to guess the letters. The user has a limited number of guesses, used letters are shown and it is not permitted to select the same letter twice. The round is over when guesses run out or when the word is guessed."
                     },
                     {
                         photo: tetris,
-                        description: ""
+                        description: "The start of a game of Tetris. The next block is shown on the left and to the right there is a space where the user can save/swap a block for the next block in the queue. The score is shown at the top and there is also a back button to quit out. The game starts at a slow pace, a large delay between function calls, then as time passes the delay becomes smaller and the blocks get faster. This was a lot of fun to create, even with the amount of challenges I faced. There is another array that just stores numbers, each number relates to an image in an array, number 0 is a black image for an empty square, 1 for a yellow block etc. The array on the canvas is created incrimentally from the numbers on that array. Checks are constantly being made for whether a line has zero's left, once a line doesnt have any it means there are no empty squares and the row can be removed and the rows above lowered. A great and fun learning experience."
                     }
                 ]
     }
