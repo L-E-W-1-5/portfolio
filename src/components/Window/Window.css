@@ -184,3 +184,7 @@
     flex-direction: row;
     align-items: center;
 }
+
+.project-details{
+    white-space: pre-wrap;
+}

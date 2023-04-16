@@ -35,7 +35,7 @@ export const StartMenu = ({setStart, addWindow}) => {
           
           <a className="start-menu-item" href="https://github.com/L-E-W-1-5" target="_blank" rel="noreferrer">My GitHub</a>
 
-          <a className="start-menu-item" href={pdf} target="_blank" rel="noreferrer">CV</a>
+          <a className="start-menu-item" href={pdf} target="_blank" rel="noreferrer">My CV</a>
 
         </div>
       </div>
