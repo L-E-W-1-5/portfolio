@@ -31,11 +31,11 @@ export const StartMenu = ({setStart, addWindow}) => {
 
         <div className="start-menu-list">
            
-          <a className="start-menu-item" href="https://www.linkedin.com/in/lewis-wootton-30645322b/" target="_blank" rel="noreferrer">My LinkedIn</a>
+          <a className="start-menu-item w95-font" href="https://www.linkedin.com/in/lewis-wootton-30645322b/" target="_blank" rel="noreferrer">My LinkedIn</a>
           
-          <a className="start-menu-item" href="https://github.com/L-E-W-1-5" target="_blank" rel="noreferrer">My GitHub</a>
+          <a className="start-menu-item w95-font" href="https://github.com/L-E-W-1-5" target="_blank" rel="noreferrer">My GitHub</a>
 
-          <a className="start-menu-item" href={pdf} target="_blank" rel="noreferrer">My CV</a>
+          <a className="start-menu-item w95-font" href={pdf} target="_blank" rel="noreferrer">My CV</a>
 
         </div>
       </div>

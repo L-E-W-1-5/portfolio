@@ -36,7 +36,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
         <div className="nav-container">
 
           <div
-            className="start-button border-shading"
+            className="start-button border-shading w95-font"
             id={startMenu === true ? "tab-highlight" : undefined}
             onClick={() => setStartMenu((current) => !current)}
           >

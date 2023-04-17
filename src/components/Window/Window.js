@@ -87,7 +87,7 @@ const Window = (props) => {
           
         >
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
-          <span className="window-nav-text">{props.data}</span>
+          <span className="window-nav-text w95-font">{props.data}</span>
           <button
             className="nav-buttons"
             onClick={() => props.handleMinimise(props.thisId)}
@@ -115,7 +115,7 @@ const Window = (props) => {
                   onClick={() => props.addWindow(`WordPad - ${project.title}`)}
                 >
                   <img className="window-icon" src={folder} alt="folder"></img>
-                  <div className="window-item-title">{project.title}</div>
+                  <div className="window-item-title w95-font">{project.title}</div>
                 </div>
               );
             })}

@@ -97,7 +97,7 @@ function App() {
             alt="my_computer"
             onClick={() => addWindow("My Projects")}
           ></img>
-          <p className="desktop-icon-text">My Projects</p>
+          <p className="desktop-icon-text w95-font">My Projects</p>
         </div>
 
         
@@ -108,7 +108,7 @@ function App() {
             alt="recycle_bin"
             onClick={() => addWindow("recycle_bin")}
           ></img>
-          <p className="desktop-icon-text">Recycle Bin</p>
+          <p className="desktop-icon-text w95-font">Recycle Bin</p>
           </div>
         
         
@@ -119,7 +119,7 @@ function App() {
             alt="wordpad"
             onClick={() => addWindow("About Me")}
           ></img>
-          <p className="desktop-icon-text">About Me</p>
+          <p className="desktop-icon-text w95-font">About Me</p>
         </div>
       </div>
 
