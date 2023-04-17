@@ -1,5 +1,5 @@
 import './Window.css';
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import folder from '../../assets/open_folder.png'
 import {projects} from '../../data/projects.js';
 // import cv from '../../data/Screenshot 2023-03-28 211658.png'
@@ -12,7 +12,9 @@ import {aboutMe} from '../../data/aboutme';
 const Window = (props) => {
   const [windowSize, setWindowSize] = useState(false);
 
-  const [location, setLocation] = useState({x: props.offset * 40, y: props.offset * 40})
+  const myRef = useRef()
+
+  const [offset, setOffset] = useState(0)
     
   const [x, setX] = useState(props.offset * 40);
   const [y, setY] = useState(props.offset * 40);
@@ -35,10 +37,12 @@ const Window = (props) => {
   const handleDragEnd = (e) => {
 
     if (e.type.includes('drag')){
-        setX(e.pageX - location.x);
+        setX(e.clientX - 100 - offset);
         setY(e.clientY);
         return
     }
+
+    // i need to complete and save this equation before the window is moved and dropped. the value needs to be saved and then subtracted once the window is dropped
 
     const touch = e.targetTouches[0];
     setX(touch.clientX - 150)
@@ -47,7 +51,10 @@ const Window = (props) => {
 
   const handleMouseDown = (e) => {
 
-    setLocation({x: e.clientX, y: e.clientY});
+    let refLeft = myRef.current.getBoundingClientRect().left;
+
+    let offN = e.clientX - refLeft;
+    setOffset(offN)
   }
 
 
@@ -71,11 +78,12 @@ const Window = (props) => {
           className={
             activeWindow === props.thisId ? "window-nav-selected" : "window-nav"
           }
+          ref={myRef}
           draggable
           onTouchMove={handleDragEnd}
        
           onDragEnd={handleDragEnd}
-          onMouseMove={handleMouseDown}
+          onMouseDown={handleMouseDown}
           
         >
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
