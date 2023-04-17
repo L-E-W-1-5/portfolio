@@ -150,7 +150,7 @@ const Window = (props) => {
                 {selected.stages.map((stage, k) => {
                   return <Stages key={k} project={stage}></Stages>;
                 })}
-                {/* <Stages project={selected}></Stages> */}
+               
               </div>
             )}
 

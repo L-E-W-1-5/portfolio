@@ -3,7 +3,7 @@ import {useEffect, useRef} from 'react';
 import './StartMenu.css';
 //import wordpad from '../../assets/wordpad.png';
 
-export const StartMenu = ({setStart, addWindow}) => {
+export const StartMenu = ({setStart}) => {
 
     const wrapperRef = useRef(null);
     useOutsideAlert(wrapperRef);
@@ -42,7 +42,3 @@ export const StartMenu = ({setStart, addWindow}) => {
     );
 }
 
-// //<div className="start-menu-item">
-//  <img className="start-icon" src={wordpad} alt=".txt"></img>
-// <p className="start-menu-text" onClick={() => {addWindow('About Me')}}>About Me</p>
-// </div> 

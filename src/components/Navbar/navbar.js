@@ -31,7 +31,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
 
     return (
       <div className="nav-menu border-shading">
-        {startMenu && <StartMenu addWindow={addWindow} setStart={setStartMenu}></StartMenu>}
+        {startMenu && <StartMenu setStart={setStartMenu}></StartMenu>}
 
         <div className="nav-container">
 
