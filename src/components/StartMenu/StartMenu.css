@@ -20,12 +20,22 @@
    /* height: 100%; */
    /* margin-right: auto auto auto 5px; */
     height: 98%;
-    width: 33px;
+    width: 26px;
+    /* width: 33px; */
    margin-top: 2px;
    margin-left: 2px;
    margin-bottom: 50px;
    /* display: flex; */
-   background: rgb(133, 133, 133);
+   background: #919499
+}
+
+.start-menu-title-text-95{
+    font-weight: lighter;
+    color: white;
+}
+
+.start-menu-title-text-windows{
+    color: #d5d6d8;
 }
 
 .start-text{
@@ -33,7 +43,7 @@
     white-space: nowrap;
     /* margin-left: 30px;
     margin-bottom: 35px; */
-    color: white;
+    
     margin-top: 180px;
    
 }

@@ -26,7 +26,7 @@ export const StartMenu = ({setStart, addWindow}) => {
       <div ref={wrapperRef} className="start-menu border-shading">
 
         <div className="start-menu-title">
-            <h2 className="start-text" >Windows 95</h2>
+            <h2 className="start-text"><span className="start-menu-title-text-windows">Windows</span><span className="start-menu-title-text-95">95</span></h2>
         </div>
 
         <div className="start-menu-list">

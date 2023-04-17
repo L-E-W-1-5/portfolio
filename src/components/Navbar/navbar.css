@@ -36,7 +36,7 @@
 
 .nav-tab{
     padding: 3px;
-    margin-left: 20px;
+    margin-left: 5px;
     margin-right: 10px;
     display: flex;
     /* width: 60vw; */
@@ -52,7 +52,7 @@
 
 @media only screen and (max-width: 600px) {
     .nav-tab{
-        width: 55vw;
+        width: 53vw;
     }
 }
 
@@ -106,5 +106,13 @@
 .start-button-icon{
     height: 23px;
     width: 27px;
-    margin: auto 2px auto 8px;
+    /* margin: 5px 2px auto 8px; */
+}
+
+.start-button-text{
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px 2px auto 8px;
 }

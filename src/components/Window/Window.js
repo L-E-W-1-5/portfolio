@@ -42,7 +42,6 @@ const Window = (props) => {
         return
     }
 
-    // i need to complete and save this equation before the window is moved and dropped. the value needs to be saved and then subtracted once the window is dropped
 
     const touch = e.targetTouches[0];
     setX(touch.clientX - 150)
@@ -81,10 +80,8 @@ const Window = (props) => {
           ref={myRef}
           draggable
           onTouchMove={handleDragEnd}
-       
           onDragEnd={handleDragEnd}
-          onMouseDown={handleMouseDown}
-          
+          onMouseDown={handleMouseDown}       
         >
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
           <span className="window-nav-text w95-font">{props.data}</span>
@@ -94,9 +91,11 @@ const Window = (props) => {
           >
             _
           </button>
+          
           <button className="nav-buttons" onClick={maximiseWindow}>
             []
           </button>
+
           <button
             className="nav-buttons"
             onClick={() => props.closeWindow(false)}
@@ -154,6 +153,7 @@ const Window = (props) => {
                 {/* <Stages project={selected}></Stages> */}
               </div>
             )}
+
         </div>
       </div>
     </div>

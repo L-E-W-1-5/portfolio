@@ -40,12 +40,14 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
             id={startMenu === true ? "tab-highlight" : undefined}
             onClick={() => setStartMenu((current) => !current)}
           >
+          <div className="start-button-text">
             <img
               className="start-button-icon"
               src={windowsIcon}
               alt="windows icon"
             ></img>
             Start
+          </div>
           </div>
 
           <div className="nav-tab">
