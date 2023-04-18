@@ -16,7 +16,7 @@ const Clock = () => {
     }, []);
 
     return (
-        <span>{time.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</span>
+        <span className="w95-font clock">{time.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</span>
     )
 
 
