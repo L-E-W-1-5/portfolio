@@ -69,10 +69,6 @@
 .start-menu-item{
     width: 100%;
     height: 100%;
-    margin-top: 5px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 
 .start-menu-text{
@@ -85,7 +81,7 @@
 
 .start-menu-icon{
     height: 30px;
-    
+   margin-top: 17px;
 }
 
 .start-menu-option{
@@ -93,12 +89,11 @@
     width: 90%;
     height: 80%;
     align-content: center;
-    /* align-items: center;  */
-     /* justify-content: center; */
     gap: 15px;
     padding-left: 15px;
+    
 }
 
 .margin{
-    margin-top: 20px;
+    margin-top: 23px;
 }

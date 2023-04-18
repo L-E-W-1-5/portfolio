@@ -60,7 +60,7 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
                   onClick={() => handleMinimiseFocus(tab)}
                 >
                   <img className="tab-icon" src={tab.icon} alt="T"></img>
-                  <p className="tab-text">{tab.data}</p>
+                  <p className="tab-text w95-font">{tab.data}</p>
                 </button>
               );
             })}

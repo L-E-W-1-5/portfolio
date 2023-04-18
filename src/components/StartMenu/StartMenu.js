@@ -35,17 +35,17 @@ export const StartMenu = ({setStart}) => {
         <div className="start-menu-list">
 
           <div className="start-menu-option">
-            <img className="start-menu-icon margin" src={linkIcon} alt="linkedin icon"></img>
+            <img className="start-menu-icon" src={linkIcon} alt="linkedin icon"></img>
             <a className="start-menu-item w95-font margin" href="https://www.linkedin.com/in/lewis-wootton-30645322b/" target="_blank" rel="noreferrer">My LinkedIn</a>
           </div>
 
           <div className="start-menu-option">
-            <img className="start-menu-icon margin" src={gitIcon} alt="git icon"></img>
+            <img className="start-menu-icon" src={gitIcon} alt="git icon"></img>
             <a className="start-menu-item w95-font margin" href="https://github.com/L-E-W-1-5" target="_blank" rel="noreferrer">My GitHub</a>
           </div>
 
           <div className="start-menu-option">
-            <img className="start-menu-icon margin" src={cvIcon} alt="cv icon"></img>
+            <img className="start-menu-icon" src={cvIcon} alt="cv icon"></img>
             <a className="start-menu-item w95-font margin" href={pdf} target="_blank" rel="noreferrer">My CV</a>
           </div>
 
