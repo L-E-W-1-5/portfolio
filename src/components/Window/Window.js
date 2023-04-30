@@ -142,7 +142,7 @@ const Window = (props) => {
                 <h1 className="project-title">{selected.title}</h1>
 
                 {selected.links.map((link, k) => {
-                  return <a key={k} href={link}>{link}</a>;
+                  return <a key={k} href={link} target="_blank" rel="noreferrer">{link}</a>;
                 })}
 
                 <p className="project-details">{selected.details}</p>
