@@ -116,7 +116,7 @@ export const projects = [
                 ]
     },
     {
-        title: "LuluGPT",
+        title: "LuluGPT (2025)",
         links: ["https://github.com/L-E-W-1-5/chatGPT_api", "https://github.com/L-E-W-1-5/chatgpt_backend", "https://lulugpt.netlify.app/"],
         details: "A web application with a front end made using react and a back end made with Node.js and Express. It utilizes the OpenAI API.",
         stages: [
@@ -126,7 +126,7 @@ export const projects = [
                     },
                     {
                         photo: sidewaysEmail,
-                        description: "For both your returned answers and images, there is the option to email the data to others', data is stored on the form using local storage so it's possible to send both an image and an answer in the same email."
+                        description: "For both your returned answers and images, there is the option to email the data to others, data is stored on the form using local storage so it's possible to send both an image and an answer in the same email."
                     },
                     {
                         photo: sidewaysLoading,
