@@ -130,6 +130,7 @@ function App() {
         minimise={handleMinimise}
         addWindow={addWindow}
       ></Navbar>
+      
     </div>
   );
 }

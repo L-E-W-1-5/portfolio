@@ -9,10 +9,14 @@ const Clock = () => {
     }
 
     useEffect(() => {
+        
         const timerId = setInterval(refreshClock, 1000);
-        return function cleanup() {
-            clearInterval(timerId);
-        };
+        // return function cleanup() {
+        //     clearInterval(timerId);
+        // };
+
+        return (() => {clearInterval(timerId)})
+
     }, []);
 
     return (

@@ -1,4 +1,5 @@
 .project-window{
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     width: 98%;
@@ -14,10 +15,11 @@
     width: 50%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .project-window {
       flex-direction: column;
       align-items: center;
+
     }
 
     .project-image{

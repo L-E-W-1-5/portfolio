@@ -16,6 +16,11 @@ import choosePlayers from '../data/cs_game/choose_players.PNG';
 import hangman from '../data/cs_game/hangman.PNG';
 import tetris from '../data/cs_game/tetris.PNG';
 
+import questionScreen from '../data/LuluGPT/question-screen.png';
+import sidewaysEmail from '../data/LuluGPT/sideways-email.png';
+import sidewaysLoading from '../data/LuluGPT/sideways-loading-screen.png';
+import returnedImage from '../data/LuluGPT/returned-image.png';
+
 
 
 export const projects = [
@@ -107,6 +112,29 @@ export const projects = [
                     {
                         photo: tetris,
                         description: "The start of a game of Tetris. The next block is shown on the left and to the right there is a space where the user can save/swap a block for the next block in the queue. The score is shown at the top and there is also a back button to quit out. The game starts at a slow pace, a large delay between function calls, then as time passes the delay becomes smaller and the blocks get faster. This was a lot of fun to create, even with the amount of challenges I faced. There is another array that just stores numbers, each number relates to an image in an array, number 0 is a black image for an empty square, 1 for a yellow block etc. The array on the canvas is created incrimentally from the numbers on that array. Checks are constantly being made for whether a line has zero's left, once a line doesnt have any it means there are no empty squares and the row can be removed and the rows above lowered. A great and fun learning experience."
+                    }
+                ]
+    },
+    {
+        title: "LuluGPT",
+        links: ["https://github.com/L-E-W-1-5/chatGPT_api", "https://github.com/L-E-W-1-5/chatgpt_backend", "https://lulugpt.netlify.app/"],
+        details: "A web application with a front end made using react and a back end made with Node.js and Express. It utilizes the OpenAI API.",
+        stages: [
+                    {
+                        photo: questionScreen,
+                        description: "The first screen that you see will be where you can ask questions to the OpenAI API and receive an answer. The web application is fully responsive to differently sized screens and features different layouts. All data on all the different forms, along with the last form used, are saved to local storage and are only lost through the 'clear' button."
+                    },
+                    {
+                        photo: sidewaysEmail,
+                        description: "For both your returned answers and images, there is the option to email the data to others', data is stored on the form using local storage so it's possible to send both an image and an answer in the same email."
+                    },
+                    {
+                        photo: sidewaysLoading,
+                        description: "All forms are using the same CSS styles and are all responsive in the same way. Due to the time it takes to fetch resources from the OpenAI API (especially when I have my back end hosted for free) I created a loading screen to use across all forms, with a loading animation to let the user know the application hasn't crashed. Any failure to fetch resources, for whatever reason, are reported back to the user with an alert box to describe the error. All errors, be it user error or network error etc, are handled correctly. The fetch (or email send) operation can also be cancelled while the loading screen is displayed."
+                    },
+                    {
+                        photo: returnedImage,
+                        description: "Returned images are responsive to the screen size and can be emailed, there are buttons to show and hide the image and the user can paste the url into the email form with the click of a button. In essence, I just felt that this would be a fun and useful project to create. I focussed more on mobile design than on past projects and I will think of future web app design from a 'mobile first' standpoint as i have found it to be easier to adapt from small screen to a larger screen as opposed to the other way around."
                     }
                 ]
     }
