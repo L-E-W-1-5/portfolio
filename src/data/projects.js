@@ -24,7 +24,7 @@ import returnedImage from '../data/LuluGPT/returned-image.png';
 import login from '../data/movie_streamer/login_screen.png';
 import register from '../data/movie_streamer/register.png';
 import dashboardPhoto from '../data/movie_streamer/dashboard.png';
-import dashboardMessage from '../data/movie_streamer/dashboard_message.png';
+import dashboardMessage from '../data/movie_streamer/dashboard_messagebox.png';
 import responsiveMessage from '../data/movie_streamer/responsive_message.png';
 import responsiveMovieOpen from '../data/movie_streamer/responsive_movie_open.png';
 import uploadForm from '../data/movie_streamer/upload_form.png';
