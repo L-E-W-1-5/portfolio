@@ -21,7 +21,7 @@ import sidewaysEmail from '../data/LuluGPT/sideways-email.png';
 import sidewaysLoading from '../data/LuluGPT/sideways-loading-screen.png';
 import returnedImage from '../data/LuluGPT/returned-image.png';
 
-import login from '../data/movie_streamer/login.png';
+import login from '../data/movie_streamer/login_screen.png';
 import register from '../data/movie_streamer/register.png';
 import dashboardPhoto from '../data/movie_streamer/dashboard.png';
 import dashboardMessage from '../data/movie_streamer/dashboard_message.png';
