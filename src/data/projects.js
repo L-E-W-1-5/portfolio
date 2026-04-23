@@ -21,6 +21,17 @@ import sidewaysEmail from '../data/LuluGPT/sideways-email.png';
 import sidewaysLoading from '../data/LuluGPT/sideways-loading-screen.png';
 import returnedImage from '../data/LuluGPT/returned-image.png';
 
+import login from '../data/login.png';
+import register from '../data/register.png';
+import dashboardPhoto from '../data/dashboard.png';
+import dashboardMessage from '../data/dashboard_message.png';
+import responsiveMessage from '../data/responsive_message.png';
+import responsiveMovieOpen from '../data/responsive_movie_open.png';
+import uploadForm from '../data/upload_form.png';
+import editMovieForm from '../data/edit_movie_form.png';
+import editUserForm from '../data/edit_user_form.png';
+import moviePlayer from '../data/movie_player.png';
+
 
 
 export const projects = [
@@ -137,9 +148,78 @@ export const projects = [
                         description: "Returned images are responsive to the screen size and can be emailed, there are buttons to show and hide the image and the user can paste the url into the email form with the click of a button. In essence, I just felt that this would be a fun and useful project to create. I focussed more on mobile design than on past projects and I will think of future web app design from a 'mobile first' standpoint as i have found it to be easier to adapt from small screen to a larger screen as opposed to the other way around."
                     }
                 ]
+    },
+    {
+        title: "Luluflix (2026)",
+        links: ["https://github.com/L-E-W-1-5/movie-streamer", "https://github.com/L-E-W-1-5/movie-streamer-backend", "https://luluflix.netlify.app"],
+        details: `A web application with a front end made using React, Typescript and Bootstrap and a back end made with Node.js, Express and Postgres, along with an AWS S3 bucket. It acts similarly to popular movie streaming sites or with alteration it could also be similar to YouTube.
+        This has been by far the most challenging project I have created to date but also the most rewarding as I can see an immense progression in my understanding of how to plan and create larger, more complex applications. There are still many more things that need to be added, fixed, or improved
+        but I feel like I could spend an infinite amount of time on this project and still find things to change, add, improve etc. I have enjoyed immensely creating this project and I'm proud of the harsh learning curve I managed to overcome and the problems I managed to solve. I also feel like equally as important (or more important) as my successes during the building of this project were the things that didnt go to plan... at all. I soon found that I had a severe lack of understanding 
+        as to how some aspects of the app would function correctly. There are too many to list but here's just one example, I soon realised that it would be useless to have a user upload a 2gb movie file in one piece, this made loading time for playing the movie or any fast forwarding etc, intolerably long, so during some research I came across 'HLS' or 'HTTP Live Streaming', which can play video files in smaller segments each only a few seconds long, I then learnt how to use FFmpeg in order
+        to segment the video files, modify the quality/size of the video, convert them to the right format and importantly, create a .m3u8 file which lists all the segments (addresses of where they are located in the S3 bucket) in the correct order and acts as a playlist. As if this wasnt enough of an issue to overcome, imagine previously I had the settings on my S3 Bucket set to strict, I didnt want unauthorised access
+        to my videos. I used signed URL's to allow limited access to the files without making the bucket public. This wasnt an issue when my video had been in one piece but now there were over 700, 10 second segments. I'm not completely happy with my solution to this but I created an array of all the segments from the .m3u8 file, then I created a function 
+        to loop through the array and generate a signed URL for each segment. Initially I assumed that this would take far too much time, generating 700 signed URL's, 700 requests to the S3 before it would start playing the video, but it actually only took a few seconds to generate all the signed URL's, add them back into a list (a .m3u8 file) and start the video playing.
+        This issue went on for longer than this with the next issue being my player on the front end not recognising the .m3u8, still having short videos that werent HLS that needed to play.. The point is I could reel off numerous other issues i had like this, I (for the most part) enjoyed the challenge and being able to persevere and at the end of it I have something I am truly proud of, 
+        I feel like I levelled up hugelt during this project. Now I have the problem of wanting to go back to older projects and redo large pieces I now know how to improve, starting a new project (I again want to use tech and skills i've never used before, I have a couple of interesting ideas) or i still have a lot to fix on Luluflix.. I have another issue right now that im working on in fact, maybe the last thing before I move on. I'd only ever tested uploading large files from my local server, with no issues, however when testing a large upload from
+        my deployed backend I get an OOM (out of memory) error, my service only has 512MB of memory. I'm now researching a couple of options to solve this. I'd rather see if I can send the file from the client in small batches of maybe 50 or 100 segments at a time, process them on the backend: store in the S3 and the database, then call global.GC to clear the memory before responding to the client, triggering another batch to be sent.
+        The other option is streaming the file instead of uploading in batches, this is something I have never done and seems complex. I gather that I loop the segments on the client side, sending one at a time and on the backend I change the storage settings for Multer and store the file in the S3 bucketso in theory it barely affects the memory of the server. The first option requires 
+        a lot less changes to my code and a lot less research but the second option seems like the more efficient, more widely used approach and it definitely looks a better way of doing it so I will be looking into both.`,
+        stages: [
+                    {
+                        photo: login,
+                        description: "The first screen that you see will be the login screen, there is also the option to navigate to the register page if you dont have an account. The user details are stored in a database and authenticated using JWT tokens. I didn't want to use Auth0 or another similar service because I needed it all to be very secure in that each registration would need to be verified by myself, it's only a personal project and only to showcase my ability, not for commercial use. Once logged in the user can access the dashboard where all movies are listed and can be searched through. Once a new user registers using their name and email, I am sent an email with their details and a link to verify the account, once I click the link the user is sent an email to confirm their registration and give them a GUID they can use to log in, this GUID can be changed to a password of their choosing from the dropdown menu. This was all created using Nodemailer and JWT tokens for security. Once registered I (or another admin account) can alter their permissions and either delete their account, upgrade the account to admin or I can unverify the account if I have any doubts about the legitimacy of the user. The login and register forms are both responsive and use the same CSS styles as the rest of the app, after login the user details are stored in session storage so the data persists even after refresh."
+                    },
+                    {
+                        photo: register,
+                        description: "The register form is kept simple as I wanted to verify each user myself, so I just ask for a name and email, then I can verify the account and send them a GUID to log in with."
+                    },
+                    {
+                        photo: dashboardPhoto,
+                        description: "This is the main dashboard for the app where users can view movies that are available, send messages in the message board and select from various options in the dropdown menu. Although the menu options have been fleshed out for admin accounts, a standard account as yet only have limited options, including 'change password' and 'logout'. The style of the dashboard is kept fairly simple and easy to navigate."
+                    },
+                    {
+                        photo: dashboardMessage,
+                        description: "I included the message board as a way for users to interact with each other, share movie recommendations, ask for certain movies to be added etc. The messages are stored in the database and retrieved when the user logs in, they can also be posted and deleted (from an admin account) at will."
+                    },
+                    {
+                        photo: responsiveMessage,
+                        description: "I wanted to keep the message board from taking over too much of the screen space from the movie list, so i made it expandable from the right side of the screen and collapsable back to just a small column when not in use. It is responsive to screen size so if the user has a monitor or a tablet, it will expand out just a short distance, however if the page is being viewed on mobile, it will expand to cover the width of the screen."
+                    },
+                    {
+                        photo: responsiveMovieOpen,
+                        description: ""
+                    },
+                    {
+                        photo: uploadForm,
+                        description: ""
+                    },
+                    {
+                        photo: editMovieForm,
+                        description: ""
+                    },
+                    {
+                        photo: editUserForm,
+                        description: ""
+                    },
+                    {
+                        photo: moviePlayer,
+                        description: ""
+                    }
+                ]
     }
 ]
-
+/*
+import login from '../data/login.png';
+import register from '../data/register.png';
+import dashboardPhoto from '../data/dashboard.png';
+import dashboardMessage from '../data/dashboard_message.png';
+import responsiveMessage from '../data/responsive_message.png';
+import responsiveMovieOpen from '../data/responsive_movie_open.png';
+import uploadForm from '../data/upload_form.png';
+import editMovieForm from '../data/edit_movie_form.png';
+import editUserForm from '../data/edit_user_form.png';
+import moviePlayer from '../data/movie_player.png';
+*/
 // TODO: - could i make the stages of creation with pagination? Have the photos imported along with details about what it does.
 // Or could import the images seperately and have an array of notes to list alongside?
 // Can maybe try to import the projects similar to how i imported the cv pdf in recycle bin?
