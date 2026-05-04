@@ -8,8 +8,8 @@ export function Stages({project}) {
             
             <p className="project-description">{project.description}</p>
             <img className="project-image" src={project.photo} alt="stage of development"></img>
-            {/* {project.photos.map((pic) => {
-                    return <img src={pic} alt="project stage number 1"></img>
+            {/* {project.photos.map((pic, i) => {
+                    return <img src={pic} alt={`project stage number ${i + 1}`}></img>
             })} */}
         </div>
     )
