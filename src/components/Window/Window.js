@@ -14,10 +14,10 @@ const Window = (props) => {
 
   const myRef = useRef()
 
-  const [offset, setOffset] = useState(0)
+  const [offset, setOffset] = useState({x: 0, y: 0});
     
-  const [x, setX] = useState(props.offset * 40);
-  const [y, setY] = useState(props.offset * 40);
+  const [x, setX] = useState(props.offset ? props.offset * 40 : 100);
+  const [y, setY] = useState(props.offset ? props.offset * 40 : 100);
 
 
   let selected;
@@ -37,38 +37,73 @@ const Window = (props) => {
   const handleDragEnd = (e) => {
 
     if (e.type.includes('drag')){
-        setX(e.clientX - 100 - offset);
-        setY(e.clientY);
+        setX(e.clientX - offset.x);
+        setY(e.clientY - offset.y);
         return
     }
 
 
-    const touch = e.targetTouches[0];
-    setX(touch.clientX - 150)
-    setY(touch.clientY)
+    const touch = e.targetTouches[0] || e.changedTouches[0];
+    if (touch){
+
+      setX(touch.clientX - offset.x)
+      setY(touch.clientY - offset.y)
+    }
   };
+
+  const handleTouchStart = (e) => {
+
+    props.moveToFront(props.thisId);
+    props.setNewTarget(props.thisId);
+
+    let ref = myRef.current.getBoundingClientRect();
+    let refLeft = ref.left;
+    let refTop = ref.top;
+
+    let offLeft = e.targetTouches[0].clientX - refLeft;
+    let offTop = e.targetTouches[0].clientY - refTop;
+
+    setOffset({x: offLeft, y: offTop})
+  }
 
   const handleMouseDown = (e) => {
 
-    let refLeft = myRef.current.getBoundingClientRect().left;
+    props.moveToFront(props.thisId);
+    props.setNewTarget(props.thisId);
 
-    let offN = e.clientX - refLeft;
-    setOffset(offN)
+    let ref = myRef.current.getBoundingClientRect();
+    let refLeft = ref.left;
+    let refTop = ref.top;
+
+    let offLeft = e.clientX - refLeft;
+    let offTop = e.clientY - refTop;
+    setOffset({x: offLeft, y: offTop})
   }
 
+  // const openProject = (e, project) => {
+  //   console.log(e)
+  //   e.stopPropagation();
+  //   //props.addWindow(`WordPad - ${project.title}`)
+  // }
 
 
-
+//id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"}
   return (
     <div
       className={
         props.minimise === true ? "minimised-window" : "window-wrapper"
       }
-      id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"}
+      
       onClick={() => {
-        props.setWindow(props.thisId);
+        props.setNewTarget(props.thisId);
+        props.moveToFront(props.thisId);
       }}
-      style={{ position: "absolute", top: y, left: x }}
+      style={{ 
+        position: "absolute", 
+        top: y, 
+        left: x,
+        zIndex: props.zIndex
+     }}
     >
       <div
         className={windowSize === true ? "maximised-window" : "document-window"}
@@ -81,13 +116,18 @@ const Window = (props) => {
           draggable
           onTouchMove={handleDragEnd}
           onDragEnd={handleDragEnd}
-          onMouseDown={handleMouseDown}       
+          onMouseDown={handleMouseDown}    
+          onTouchStart={handleTouchStart} 
+          onClick={(e) => {console.log(props.zIndex)}}  
         >
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
           <span className="window-nav-text w95-font">{props.data}</span>
           <button
             className="nav-buttons"
-            onClick={() => props.handleMinimise(props.thisId)}
+            onClick={(e) => {
+              e.stopPropagation();
+              props.handleMinimise(props.thisId)
+              }}
           >
             _
           </button>
@@ -111,7 +151,10 @@ const Window = (props) => {
                 <div 
                   className="window-item icon"
                   key={k}
-                  onClick={() => props.addWindow(`WordPad - ${project.title}`)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    props.addWindow(`WordPad - ${project.title}`)
+                  }}
                 >
                   <img className="window-icon" src={folder} alt="folder"></img>
                   <div className="window-item-title w95-font">{project.title}</div>

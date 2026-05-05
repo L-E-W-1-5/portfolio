@@ -11,21 +11,28 @@ import {StartMenu} from '../StartMenu/StartMenu.js';
 
 
 
-export function Navbar({tabs, setNewTarget, newTarget, minimise, addWindow}) {
+export function Navbar({tabs, setNewTarget, newTarget, minimise, moveToFront}) {
 
     const [startMenu, setStartMenu] = useState(false);
    
 
     const handleMinimiseFocus = (tab) => {
+      console.log(tab.key, newTarget)
+
         if (newTarget === tab.key || tab.minimised === true){
+
             if (tab.minimised === true){
+
                 setNewTarget(tab.key);
             }
             minimise(tab.key);
         }
         else{
             setNewTarget(tab.key);
+            
         }
+
+       moveToFront(tab.key);
     }
 
 

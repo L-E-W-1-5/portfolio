@@ -11,10 +11,36 @@ import MultipleWindows from './components/MultipleWindows/MultipleWindows.js';
 function App() {
 
   const [window, showWindow] = useState([]);
+
   const [windows, addWindows] = useState([]);
 
   const [newTargetWindow, setNewTargetWindow] = useState();
 
+
+  const moveToFront = (targetKey) => {
+
+    console.log(targetKey, windows)
+
+    let maxZ
+
+    if (windows.length === 0){
+      return 1;
+    }
+
+    addWindows(w => {
+
+      maxZ = Math.max(...w.map(z => z.zIndex || 0));
+
+      console.log(maxZ)
+
+      return w.map(x => 
+ 
+        x.key === targetKey ? {...x, zIndex: maxZ + 1} : x
+      )
+    })
+    console.log(windows)
+    return maxZ + 1
+  }
 
 
   const handleMinimise = (targetKey) => {
@@ -26,6 +52,8 @@ function App() {
       if (windowsOpen[i].key === targetKey){
 
         windowsOpen[i].minimised = !windowsOpen[i].minimised;
+
+        
       }
     }
     addWindows(windowsOpen);
@@ -36,6 +64,17 @@ function App() {
 
     let randomKey = Math.round(Math.random()*10000);
     let icon;
+
+    const windowOpen = windows.find((x) => x.data === info);
+
+    if (windowOpen){
+      if (windowOpen.minimised){
+        handleMinimise(windowOpen.key);
+      }
+      showWindow(windowOpen.key);
+      moveToFront(windowOpen.key);
+      return
+    }
 
     switch(info){
       case 'My Projects':
@@ -53,13 +92,23 @@ function App() {
       default:
         icon = executable
       break;
-    }
+    };
+
+    console.log(windows)
+
+    // const maxZIndex = Math.max(...windows.map(z => z.zIndex || 0))
+//console.log(maxZIndex)
+    
     
     addWindows(oldArray => [...oldArray, {key: randomKey,
                                           data: info,
                                           icon: icon,
-                                          minimised: false}]);
+                                          minimised: false,
+                                          zIndex: 1
+                                        }]);
     showWindow(randomKey);
+
+    moveToFront(randomKey);
   }
 
 
@@ -85,6 +134,7 @@ function App() {
             setNewTarget={setNewTargetWindow}
             newTarget={newTargetWindow}
             minimise={handleMinimise}
+            moveToFront={moveToFront}
           ></MultipleWindows>
         )}
       </div>
@@ -129,6 +179,7 @@ function App() {
         newTarget={newTargetWindow}
         minimise={handleMinimise}
         addWindow={addWindow}
+        moveToFront={moveToFront}
       ></Navbar>
       
     </div>
