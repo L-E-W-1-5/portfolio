@@ -53,7 +53,9 @@ function App() {
 
         windowsOpen[i].minimised = !windowsOpen[i].minimised;
 
-        
+        if(windowsOpen[i].minimised === true){
+          setNewTargetWindow();
+        }
       }
     }
     addWindows(windowsOpen);
