@@ -1,13 +1,22 @@
 import React from 'react';
 import './stages.css';
 
-export function Stages({project}) {
+export function Stages({project, index}) {
+
     return (
         <div className="project-window">
             {/* <p>{project.title}</p> */}
-            
-            <p className="project-description">{project.description}</p>
-            <img className="project-image" src={project.photo} alt="stage of development"></img>
+            {index % 2 === 0 ? 
+                <>
+                    <p className="project-description">{project.description}</p>
+                    <img className="project-image" src={project.photo} alt="stage of development"></img>
+                </>
+            :
+                <>
+                    <img className="project-image" src={project.photo} alt="stage of development"></img>
+                    <p className="project-description">{project.description}</p>
+                </>
+            }
             {/* {project.photos.map((pic, i) => {
                     return <img src={pic} alt={`project stage number ${i + 1}`}></img>
             })} */}

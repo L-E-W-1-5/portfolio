@@ -10,12 +10,10 @@ import {aboutMe} from '../../data/aboutme';
 
 
 const Window = (props) => {
+
   const [windowSize, setWindowSize] = useState(false);
-
   const myRef = useRef()
-
   const [offset, setOffset] = useState({x: 0, y: 0});
-    
   const [x, setX] = useState(props.offset ? props.offset * 40 : 100);
   const [y, setY] = useState(props.offset ? props.offset * 40 : 100);
 
@@ -23,77 +21,88 @@ const Window = (props) => {
   let selected;
 
   for (let i = 0; i < projects.length; i++) {
+
     if (`WordPad - ${projects[i].title}` === props.data) {
+
       selected = projects[i];
-    }
-  }
+    };
+  };
 
   let activeWindow = props.activeWindow;
 
   const maximiseWindow = () => {
+
     setWindowSize((current) => !current);
   };
+
 
   const handleDragEnd = (e) => {
 
     if (e.type.includes('drag')){
-        setX(e.clientX - offset.x);
-        setY(e.clientY - offset.y);
-        return
-    }
 
+        setX(e.clientX - offset.x);
+
+        setY(e.clientY - offset.y);
+
+        return;
+    };
 
     const touch = e.targetTouches[0] || e.changedTouches[0];
+
     if (touch){
 
       setX(touch.clientX - offset.x)
+
       setY(touch.clientY - offset.y)
-    }
+    };
   };
+
 
   const handleTouchStart = (e) => {
 
     props.moveToFront(props.thisId);
+
     props.setNewTarget(props.thisId);
 
     let ref = myRef.current.getBoundingClientRect();
+
     let refLeft = ref.left;
+
     let refTop = ref.top;
 
     let offLeft = e.targetTouches[0].clientX - refLeft;
+
     let offTop = e.targetTouches[0].clientY - refTop;
 
     setOffset({x: offLeft, y: offTop})
-  }
+  };
+
 
   const handleMouseDown = (e) => {
 
     props.moveToFront(props.thisId);
+
     props.setNewTarget(props.thisId);
 
     let ref = myRef.current.getBoundingClientRect();
+
     let refLeft = ref.left;
+
     let refTop = ref.top;
 
     let offLeft = e.clientX - refLeft;
+
     let offTop = e.clientY - refTop;
-    setOffset({x: offLeft, y: offTop})
-  }
 
-  // const openProject = (e, project) => {
-  //   console.log(e)
-  //   e.stopPropagation();
-  //   //props.addWindow(`WordPad - ${project.title}`)
-  // }
+    setOffset({x: offLeft, y: offTop});
+  };
 
 
-//id={activeWindow === props.thisId ? "visible-overflow" : "normal-index"}
   return (
     <div
       className={
         props.minimise === true ? "minimised-window" : "window-wrapper"
       }
-      
       onClick={() => {
         props.setNewTarget(props.thisId);
         props.moveToFront(props.thisId);
@@ -103,11 +112,13 @@ const Window = (props) => {
         top: y, 
         left: x,
         zIndex: props.zIndex
-     }}
+      }}
     >
+
       <div
         className={windowSize === true ? "maximised-window" : "document-window"}
       >
+
         <div
           className={
             activeWindow === props.thisId ? "window-nav-selected" : "window-nav"
@@ -120,8 +131,11 @@ const Window = (props) => {
           onTouchStart={handleTouchStart} 
           onClick={(e) => {console.log(props.zIndex)}}  
         >
+
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
+
           <span className="window-nav-text w95-font">{props.data}</span>
+
           <button
             className="nav-buttons"
             onClick={(e) => {
@@ -142,11 +156,14 @@ const Window = (props) => {
           >
             X
           </button>
+
         </div>
         
         <div className="window-contents" id={props.data === "My Projects" ? "projects-wrap" : undefined}>
           {props.data === "My Projects" &&
+          
             projects.map((project, k) => {
+
               return (
                 <div 
                   className="window-item icon"
@@ -156,19 +173,28 @@ const Window = (props) => {
                     props.addWindow(`WordPad - ${project.title}`)
                   }}
                 >
+
                   <img className="window-icon" src={folder} alt="folder"></img>
+
                   <div className="window-item-title w95-font">{project.title}</div>
+
                 </div>
               );
             })}
 
           {props.data === "About Me" && (
             <div className="about-me-window">
+
               <div className="about-me-header">
+
                 <img className="about-me-photo" src={aboutMe.photo} alt="my profile img"></img>
+
                 <h2 className="about-me-title">About Me..</h2>
+
               </div>
+
               <p className="about-me-text">{aboutMe.description}</p>
+              
             </div>
           )}
 
@@ -182,6 +208,7 @@ const Window = (props) => {
             props.data !== "About Me" &&
             props.data !== "My Projects" && (
               <div className="project-window-scroll">
+
                 <h1 className="project-title">{selected.title}</h1>
 
                 {selected.links.map((link, k) => {
@@ -191,14 +218,16 @@ const Window = (props) => {
                 <p className="project-details">{selected.details}</p>
 
                 {selected.stages.map((stage, k) => {
-                  return <Stages key={k} project={stage}></Stages>;
+                  return <Stages key={k} project={stage} index={k}></Stages>;
                 })}
                
               </div>
             )}
 
         </div>
+
       </div>
+
     </div>
   );
 }

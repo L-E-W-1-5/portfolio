@@ -4,15 +4,24 @@
     flex-direction: row;
     width: 98%;
     align-items: center;
+    justify-content: space-around;
+    gap: 50px;
 }
 
 .project-image{
-    width: 50%;
+    width: auto;
+    height: auto;
+    max-height: 450px;
+    max-width: 800px;
+    border-radius: 10px;
 }
 
 .project-description{
     white-space: pre-wrap;
     width: 50%;
+    border: 2px solid blue;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 768px) {
