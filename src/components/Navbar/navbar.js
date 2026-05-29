@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import './navbar.css';
 import Clock from '../Clock/Clock.js';
 //import pdf from '../../data/Mr_Lewis Wootton_Resume_28-03-2023-21-09-28.pdf';
@@ -14,6 +14,29 @@ import {StartMenu} from '../StartMenu/StartMenu.js';
 export function Navbar({tabs, setNewTarget, newTarget, minimise, moveToFront}) {
 
     const [startMenu, setStartMenu] = useState(false);
+
+    const wrapperRef = useRef(null);
+
+
+
+    useEffect(() => {
+
+      function handleClickOutside(event) {
+
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+
+          setStartMenu(false);
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+
+      return () => {
+
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+
+    }, [startMenu]);
    
 
     const handleMinimiseFocus = (tab) => {
@@ -38,28 +61,39 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, moveToFront}) {
 
     return (
       <div className="nav-menu border-shading">
-        {startMenu && <StartMenu setStart={setStartMenu}></StartMenu>}
-
+        
         <div className="nav-container">
 
           <div
+            ref={wrapperRef}
             className="start-button border-shading w95-font"
             id={startMenu === true ? "tab-highlight" : undefined}
-            onClick={() => setStartMenu((current) => !current)}
+            onClick={(e) => {
+              e.stopPropagation()
+              setStartMenu(current => !current)
+            }}
           >
-          <div className="start-button-text">
-            <img
-              className="start-button-icon"
-              src={windowsIcon}
-              alt="windows icon"
-            ></img>
-            Start
-          </div>
+
+            {startMenu && <StartMenu setStart={setStartMenu}></StartMenu>}
+
+            <div className="start-button-text">
+            
+              <img
+                className="start-button-icon"
+                src={windowsIcon}
+                alt="windows icon"
+              ></img>
+              Start
+
+            </div>
+
           </div>
 
           <div className="nav-tab">
             {tabs.map((tab, k) => {
+
               return (
+
                 <button
                   className="tab-div border-shading"
                   id={newTarget === tab.key ? "tab-highlight" : undefined}
@@ -67,17 +101,23 @@ export function Navbar({tabs, setNewTarget, newTarget, minimise, moveToFront}) {
                   onClick={() => handleMinimiseFocus(tab)}
                 >
                   <img className="tab-icon" src={tab.icon} alt="T"></img>
+
                   <p className="tab-text w95-font">{tab.data}</p>
+
                 </button>
               );
             })}
+
           </div>
 
           <div className="nav-clock">
+
             <Clock></Clock>
+
           </div>
 
         </div>
+
       </div>
     );
 }

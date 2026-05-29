@@ -1,5 +1,5 @@
 import pdf from '../../data/Lewis CV.pdf';
-import {useEffect, useRef} from 'react';
+//import {useEffect, useRef} from 'react';
 import './StartMenu.css';
 import gitIcon from '../../assets/pngwing.com.png';
 import linkIcon from '../../assets/link2.png';
@@ -8,25 +8,12 @@ import cvIcon from '../../assets/cvicon.png';
 
 export const StartMenu = ({setStart}) => {
 
-    const wrapperRef = useRef(null);
-    useOutsideAlert(wrapperRef);
+    
 
-    function useOutsideAlert(ref) {
-      useEffect(() => {
-        function handleClickOutside(event) {
-          if (ref.current && !ref.current.contains(event.target)) {
-            setStart(false);
-          }
-        }
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-          document.removeEventListener("mousedown", handleClickOutside);
-        };
-      }, [ref]);
-    }
+
 
     return (
-      <div ref={wrapperRef} className="start-menu border-shading">
+      <div  className="start-menu border-shading">
 
         <div className="start-menu-title">
             <h2 className="start-text"><span className="start-menu-title-text-windows">Windows</span><span className="start-menu-title-text-95">95</span></h2>

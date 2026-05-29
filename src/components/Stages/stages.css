@@ -41,4 +41,13 @@
   }
 
 
+@media only screen and (max-width: 1200px) {
 
+    .project-image{
+        max-width: 55%;
+    }
+
+    .project-description{
+        width: 100%;
+    }
+  }
