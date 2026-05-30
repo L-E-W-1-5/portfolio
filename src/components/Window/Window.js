@@ -1,5 +1,5 @@
 import './Window.css';
-import {useState, useRef} from 'react';
+import {useState, useRef, useCallback, useEffect} from 'react';
 import folder from '../../assets/open_folder.png'
 import {projects} from '../../data/projects.js';
 // import cv from '../../data/Screenshot 2023-03-28 211658.png'
@@ -14,8 +14,32 @@ const Window = (props) => {
   const [windowSize, setWindowSize] = useState(false);
   const myRef = useRef()
   const [offset, setOffset] = useState({x: 0, y: 0});
-  const [x, setX] = useState(props.offset ? props.offset * 40 : 100);
-  const [y, setY] = useState(props.offset ? props.offset * 40 : 100);
+  const [position, setPosition] = useState({x: 0, y: 0});
+  const windowRef = useRef(null);
+   const [isResizing, setIsResizing] = useState(false);
+
+   const [resizeWindow, setResizeSize] = useState({
+        height: 300,
+        width: 400
+    })
+
+   const [isDragging, setIsDragging] = useState(false);
+
+
+
+
+   
+
+
+  
+
+
+
+   const playerSize = useRef(null);
+
+
+
+   
 
 
   let selected;
@@ -33,69 +57,130 @@ const Window = (props) => {
   const maximiseWindow = () => {
 
     setWindowSize((current) => !current);
+
+    // if(!windowSize){
+    //   setResizeSize({
+    //             width: 300,
+    //             height: 400
+    //         });
+
+    //         return;
+    // }
+
+    // const maxX = window.innerWidth;
+
+    // const maxY = window.innerHeight;
+
+    // console.log(maxX, maxY)
+
+    // setResizeSize({
+    //             width: maxX,
+    //             height: maxY
+    //         });
   };
 
 
-  const handleDragEnd = (e) => {
+   const handleResizeStart = (e) => {
 
-    if (e.type.includes('drag')){
+        e.stopPropagation();
 
-        setX(e.clientX - offset.x);
+        setIsResizing(true);
 
-        setY(e.clientY - offset.y);
-
-        return;
     };
 
-    const touch = e.targetTouches[0] || e.changedTouches[0];
 
-    if (touch){
+const handleMouseDown = (e) => {
 
-      setX(touch.clientX - offset.x)
+        e.preventDefault();
 
-      setY(touch.clientY - offset.y)
+        e.stopPropagation();
+
+        setIsDragging(true);
+
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+
+        const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY
+
+        setOffset({x: clientX - position.x, y: clientY - position.y})
     };
-  };
 
 
-  const handleTouchStart = (e) => {
+    const handleMouseUp = () => {
 
-    props.moveToFront(props.thisId);
-
-    props.setNewTarget(props.thisId);
-
-    let ref = myRef.current.getBoundingClientRect();
-
-    let refLeft = ref.left;
-
-    let refTop = ref.top;
-
-    let offLeft = e.targetTouches[0].clientX - refLeft;
-
-    let offTop = e.targetTouches[0].clientY - refTop;
-
-    setOffset({x: offLeft, y: offTop})
-  };
+        setIsDragging(false);
+        setIsResizing(false);
+    };
 
 
-  const handleMouseDown = (e) => {
+    const handleMouseMove = useCallback ((e) => {
 
-    props.moveToFront(props.thisId);
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
 
-    props.setNewTarget(props.thisId);
+        const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
 
-    let ref = myRef.current.getBoundingClientRect();
+        if(isDragging){
 
-    let refLeft = ref.left;
+            // const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
 
-    let refTop = ref.top;
+            // const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
 
-    let offLeft = e.clientX - refLeft;
+            const maxX = window.innerWidth - resizeWindow.width;
 
-    let offTop = e.clientY - refTop;
+            const maxY = window.innerHeight - resizeWindow.height;
 
-    setOffset({x: offLeft, y: offTop});
-  };
+            setPosition({
+                x: Math.max(0, Math.min(clientX - offset.x, maxX)),
+                y: Math.max(0, Math.min(clientY - offset.y, maxY))
+            });
+
+            //setPosition({x: clientX - offset.x, y: clientY - offset.y})
+        };
+
+        if (isResizing && windowRef.current) {
+
+          
+          const rect = windowRef.current.getBoundingClientRect();
+
+
+            // const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+
+            // const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+            const newWidth = clientX - rect.left;
+
+            const newHeight = clientY - rect.top;
+
+            setResizeSize({
+                width: Math.max(newWidth, 200),
+                height: Math.max(newHeight, 150)
+            });
+        }
+
+    }, [isDragging, offset, isResizing, resizeWindow])
+
+
+    useEffect(() => {
+
+        window.addEventListener('mousemove', handleMouseMove)
+
+        window.addEventListener('mouseup', handleMouseUp)
+
+        window.addEventListener('touchmove', handleMouseMove)
+
+        window.addEventListener('touchend', handleMouseUp)
+
+        return() => {
+
+            window.removeEventListener('mousemove', handleMouseMove)
+
+            window.removeEventListener('mouseup', handleMouseUp)
+
+            window.removeEventListener('touchmove', handleMouseMove)
+
+            window.removeEventListener('touchend', handleMouseUp)
+        }
+
+    }, [handleMouseMove])
 
 
   return (
@@ -103,20 +188,32 @@ const Window = (props) => {
       className={
         props.minimise === true ? "minimised-window" : "window-wrapper"
       }
+      
+      ref={playerSize}
       onClick={() => {
         props.setNewTarget(props.thisId);
         props.moveToFront(props.thisId);
       }}
       style={{ 
         position: "absolute", 
-        top: y, 
-        left: x,
+        left: position.x,
+        top: position.y,
+        
         zIndex: props.zIndex
       }}
     >
 
       <div
         className={windowSize === true ? "maximised-window" : "document-window"}
+        ref={windowRef}
+        style={!windowSize ? {
+
+                    height: resizeWindow.height,
+                    width: resizeWindow.width
+                } : {
+                    height: window.innerHeight,
+                    width: window.innerWidth
+                }}
       >
 
         <div
@@ -124,12 +221,9 @@ const Window = (props) => {
             activeWindow === props.thisId ? "window-nav-selected" : "window-nav"
           }
           ref={myRef}
-          draggable
-          onTouchMove={handleDragEnd}
-          onDragEnd={handleDragEnd}
-          onMouseDown={handleMouseDown}    
-          onTouchStart={handleTouchStart} 
-          onClick={(e) => {console.log(props.zIndex)}}  
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleMouseDown}
+           
         >
 
           <img className="window-nav-icon" src={props.icon} alt=".ico"></img>
@@ -227,7 +321,10 @@ const Window = (props) => {
             )}
 
         </div>
-
+            <span className="resize-player"
+                onMouseDown={handleResizeStart}      
+                onTouchStart={handleResizeStart}  
+            ></span>
       </div>
 
     </div>
