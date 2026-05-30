@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-around;
     gap: 50px;
+    padding: 0 10px 0 10px;
 }
 
 .project-image{
@@ -22,6 +23,7 @@
     border: 2px solid blue;
     padding: 20px;
     border-radius: 10px;
+    margin: 10px 15px 10px 15px;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -160,6 +160,7 @@ const Window = (props) => {
         </div>
         
         <div className="window-contents" id={props.data === "My Projects" ? "projects-wrap" : undefined}>
+         <div className="project-folder">
           {props.data === "My Projects" &&
           
             projects.map((project, k) => {
@@ -181,6 +182,7 @@ const Window = (props) => {
                 </div>
               );
             })}
+            </div>
 
           {props.data === "About Me" && (
             <div className="about-me-window">

@@ -8,13 +8,14 @@
     border: solid #666 1px;
     background-color: #ccc;
     padding: 0.25em;
+    touch-action: none;
 }
 
 .maximised-window{
     left: 0%;
     top: 0%;
     position: fixed;
-    width: 99.5vw;
+    width: 99.4vw;
     height: 100vh;
     border-radius: 0.2em;
     border: solid #666 1px;
@@ -26,6 +27,7 @@
     /* position:absolute; */
     /* overflow: hidden; */
     opacity: 1;
+    touch-action: none;
 }
 
 .window-absolute{
@@ -106,6 +108,17 @@
     justify-content: flex-start;
     box-sizing: border-box;
 }
+
+.project-folder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    height: fit-content;
+    overflow-x: hidden;
+    justify-content: flex-start;
+}
+
 
 #projects-wrap{
     flex-wrap: wrap;
@@ -188,5 +201,17 @@
 @media only screen and (max-width: 768px){
     .window-contents{
         padding-bottom: 15%;
+    }
+
+    .maximised-window{
+        width: 98.8%;
+    }
+}
+
+@media only screen and (max-width: 550px){
+
+
+    .maximised-window{
+        width: 98.1%;
     }
 }

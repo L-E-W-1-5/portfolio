@@ -1,11 +1,14 @@
 body {
     background-color: #018281;  
     overflow: hidden;
+    
 }
 
 .main-container{
     padding: 1%;
-
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .desktop-icons{
@@ -14,6 +17,7 @@ body {
     width: 4%;
     height: 4%;
     min-width: 65px;
+    
 }
 
 .windows-container{
@@ -31,3 +35,28 @@ body {
     color: white;
 }
 
+/* .desktop-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60px;
+} */
+
+
+ @media only screen and (max-height: 550px) {
+
+    .desktop-icons{
+    display: block;
+    margin: 1% auto 0% 1.6%;
+    width: 3%;
+    height: 3%;
+    min-width: 40px;
+    
+}
+.desktop-icon-text{
+    margin-left: 1%;
+    color: white;
+    font-size: 0.8rem;
+}
+}

@@ -19,7 +19,7 @@ function App() {
 
   const moveToFront = (targetKey) => {
 
-    console.log(targetKey, windows)
+
 
     let maxZ
 
@@ -31,14 +31,14 @@ function App() {
 
       maxZ = Math.max(...w.map(z => z.zIndex || 0));
 
-      console.log(maxZ)
+     
 
       return w.map(x => 
  
         x.key === targetKey ? {...x, zIndex: maxZ + 1} : x
       )
     })
-    console.log(windows)
+    
     return maxZ + 1
   }
 
